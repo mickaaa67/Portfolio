@@ -174,20 +174,43 @@ export default function Home() {
         </div>
       </section>
       {/* Lancer votre projet Section avec animations AOS */}
-      <section id="lancement" className="py-20 bg-white w-full px-8">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-12" data-aos="fade-up">
+      <section id="lancement" className="py-20 bg-white w-full px-8 text-center">
+        <h2
+          className="text-3xl font-bold text-gray-800"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           Prêt à lancer votre projet ?
         </h2>
-        <div className="mt-12 md:mt-16 text-center justify-center space-x-12" data-aos="fade-up" data-aos-delay="200">
-          <Link href="#btn-devis" className="px-8 py-5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors duration-300 font-semibold animate-fade-in-3">
+
+        <p
+          className="mt-2 text-xl text-gray-600"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          Découvrez nos tarifs ou contactez-nous pour en discuter
+        </p>
+
+        <div
+          className="mt-12 md:mt-16 flex justify-center gap-8"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          <Link
+            href="#btn-devis"
+            className="px-8 py-5 bg-blue-600 text-white rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:bg-blue-700 font-semibold"
+          >
             Demander un Devis
           </Link>
-          <Link href="#btn-contact" className="px-8 py-5 bg-gray-800 text-white rounded-xl hover:bg-blue-700 transition-colors duration-300 font-semibold animate-fade-in-3">
+
+          <Link
+            href="#btn-contact"
+            className="px-8 py-5 bg-gray-800 text-white rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-900 font-semibold"
+          >
             Nous contacter
           </Link>
         </div>
       </section>
-
       {/* Footer */}
       <footer className="bg-gray-800 text-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
