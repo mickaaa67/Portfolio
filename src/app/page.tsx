@@ -160,7 +160,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
 
             {/* CORRECTION DES ESPACES ET CONFIRMATION DE LA POLICE ICI */}
             <p className="mt-4 text-lg text-gray-100 leading-relaxed text-justify tracking-wide">
-              Passionné par le développement web, j’aime transformer des idées en applications modernes et performantes. Grâce à mon parcours en BTS SIO et à mes expériences en projets concrets, je conçois des solutions adaptées, élégantes et évolutives. J’accorde une attention particulière à la qualité du code et à l’expérience utilisateur.
+              Passionné par le développement web, j’aime transformer des idées en applications modernes et performantes. Grâce à mon parcours et à mes expériences en projets concrets, je conçois des solutions adaptées, élégantes et évolutives. J’accorde une attention particulière à la qualité du code et à l’expérience utilisateur.
             </p>
 
             {/* Boutons */}
@@ -225,11 +225,9 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
               structurer mes compétences.
             </p>
             <p className="text-lg leading-relaxed mb-4">
-              Fort de plusieurs réalisations qui témoignent de ma motivation, 
-              <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text font-semibold"> je recherche activement un poste de développeur web en alternance </span>
-              pour octobre 2025 et pour une durée de 1 an, dans le cadre de ma 
-              préparation à la Licence Professionnelle Développement Web, 
-              Communication et Apprentissages.
+              Fort de plusieurs réalisations qui témoignent de ma motivation et de mes compétences techniques, 
+              <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text font-semibold"> je recherche activement un poste de Développeur Web (CDD ou CDI)</span>
+              , afin de mettre en pratique et d'enrichir les acquis de ma Licence Professionnelle Développement Web, Communication et Apprentissages. Disponible immédiatement et opérationnel, je suis prêt à m'investir dans votre équipe sur des projets stimulants.
             </p>
             <p className="text-lg leading-relaxed">
               Mon objectif est de continuer à progresser afin de devenir <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text font-semibold">développeur web full stack</span>. J'aime relever de nouveaux défis 
@@ -261,7 +259,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                 </div>
                 <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-800">Site e-commerce pour l'ONF</h3>
+                    <h3 className="text-xl font-bold text-gray-800">Application Web ONF</h3>
                     <p className="mt-2 text-gray-600 text-sm">
                         Site de vente de vêtements et d'équipements de protection individuelle (EPI).
                     </p>
@@ -295,7 +293,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
 
               <div className="p-6">
                 <h3 className="text-xl font-bold text-gray-800">
-                  Optimisation back-end chez Jung Logistique
+                  Alternance Jung Logistique
                 </h3>
                 <p className="mt-2 text-gray-600 text-sm">
                   Optimisation de l'architecture back-end/front-end de l'extranet de l'entreprise.
@@ -327,7 +325,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                 </div>
                 <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-800">Écolotri</h3>
+                    <h3 className="text-xl font-bold text-gray-800">Application Web Écolotri</h3>
                     <p className="mt-2 text-gray-600 text-sm">Site web pour la gestion et le suivi des pesées de déchets collectés.</p>
                     <div className="flex flex-wrap gap-2 mt-4">
                         {["HTML", "CSS", "PHP", "MySQL", "GitHub"].map((tech) => (
@@ -373,7 +371,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                 </div>
                 <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-800">BricoBrac</h3>
+                    <h3 className="text-xl font-bold text-gray-800">Application Web BricoBrac</h3>
                     <p className="mt-2 text-gray-600 text-sm">Site web pour une chaîne de magasins de bricolage familial.</p>
                     <div className="flex flex-wrap gap-2 mt-4">
                         {["HTML", "CSS", "PHP", "MySQL", "JavaScript", "Trello", "GitHub"].map((tech) => (
@@ -396,7 +394,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                 </div>
                 <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-800">Formatech</h3>
+                    <h3 className="text-xl font-bold text-gray-800">Application Web Formatech</h3>
                     <p className="mt-2 text-gray-600 text-sm">Site web pour la gestion des formations, modules et cours au sein d'un organisme de formation.</p>
                     <div className="flex flex-wrap gap-2 mt-4">
                         {["HTML", "CSS", "PHP", "MySQL", "JavaScript", "Trello", "GitHub"].map((tech) => (
@@ -869,7 +867,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                         
                         {/* LinkedIn */}
                         <a
-                            href="https://www.linkedin.com/in/mickaelhoffer"
+                            href="https://www.linkedin.com/in/mickael-hoffer/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="p-3 rounded-full bg-blue-700 hover:bg-blue-800 transition-all duration-300 hover:scale-110"
@@ -880,7 +878,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
 
                         {/* GitHub */}
                         <a
-                            href="https://github.com/mickaelhoffer"
+                            href="https://github.com/mickaaa67"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="p-3 rounded-full bg-[#1f2a4d] hover:bg-gray-800 transition-all duration-300 hover:scale-110"

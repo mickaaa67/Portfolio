@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 export default function MentionsLegales() {
   return (
@@ -121,12 +122,25 @@ export default function MentionsLegales() {
 
       {/* FOOTER */}
       <footer className="bg-[#0d1117] border-t border-gray-800 py-8 text-center text-gray-500 text-sm">
+        <div className="flex justify-center gap-6 mb-4">
+          <a
+            href="https://www.linkedin.com/in/mickael-hoffer/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-indigo-400 transition"
+          >
+            <FaLinkedin size={22} />
+          </a>
+          <a
+            href="https://github.com/mickaaa67"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-indigo-400 transition"
+          >
+            <FaGithub size={22} />
+          </a>
+        </div>
         <p>© {new Date().getFullYear()} Mickael Hoffer — Tous droits réservés.</p>
-        <p className="mt-2">
-          <Link href="/mentions-legales" className="hover:text-indigo-400 transition">
-            Mentions légales & Politique de confidentialité
-          </Link>
-        </p>
       </footer>
     </div>
   );
