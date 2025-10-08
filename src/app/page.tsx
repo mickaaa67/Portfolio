@@ -9,6 +9,7 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import ContactForm from './ContactForm';
 import React, { useState } from 'react';
 
+
 export default function Home() {
   useEffect(() => {
     // Initialisation AOS restaurée avec vos paramètres
@@ -78,6 +79,10 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
     </div>
   );
 };
+
+  function onNavigate(arg0: string): void {
+    throw new Error('Function not implemented.');
+  }
 
   return (
     <main className="bg-gray-100 ">
@@ -187,10 +192,10 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
               />
               <div className="absolute inset-0 flex flex-col justify-end p-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
                 <div className="flex justify-center space-x-4">
-                  <a href="https://linkedin.com/in/mickaelhoffer" target="_blank" rel="noopener noreferrer" className="text-white hover:text-indigo-400 transition transform hover:scale-110">
+                  <a href="https://www.linkedin.com/in/mickael-hoffer/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-indigo-400 transition transform hover:scale-110">
                     <FaLinkedin size={30} />
                   </a>
-                  <a href="https://github.com/mickaelhoffer" target="_blank" rel="noopener noreferrer" className="text-white hover:text-indigo-400 transition transform hover:scale-110">
+                  <a href="https://github.com/mickaaa67" target="_blank" rel="noopener noreferrer" className="text-white hover:text-indigo-400 transition transform hover:scale-110">
                     <FaGithub size={30} />
                   </a>
                 </div>
@@ -267,30 +272,54 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                             </span>
                         ))}
                     </div>
-                    <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">
-                        Voir le projet
-                    </button>
+                    <a
+                      href="/project/onf"
+                      className="mt-6 inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+                    >
+                      Voir le projet
+                    </a>
                 </div>
             </div>
 
             {/* Projet Jung Logistique */}
             <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105">
-                <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
-                    <img src="/logoJungLogistique.png" alt="Optimisation back-end Jung Logistique" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
-                </div>
-                <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-800">Optimisation back-end chez Jung Logistique</h3>
-                    <p className="mt-2 text-gray-600 text-sm">Optimisation de l'architecture back-end/front-end de l'extranet de l'entreprise.</p>
-                    <div className="flex flex-wrap gap-2 mt-4">
-                        {["C#", "JavaScript", "GitHub"].map((tech) => (
-                            <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
-                        ))}
-                    </div>
-                    <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
-                </div>
-            </div>
+              <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+                <img
+                  src="/logoJungLogistique.png"
+                  alt="Optimisation back-end Jung Logistique"
+                  className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300"
+                  style={{ padding: "10px" }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+              </div>
 
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-800">
+                  Optimisation back-end chez Jung Logistique
+                </h3>
+                <p className="mt-2 text-gray-600 text-sm">
+                  Optimisation de l'architecture back-end/front-end de l'extranet de l'entreprise.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {["C#", "JavaScript", "GitHub"].map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <a
+                  href="/project/jung-logistique"
+                  className="mt-6 inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+                >
+                  Voir le projet
+                </a>
+              </div>
+            </div>
             {/* Projet Écolotri */}
             <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105">
                 <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
@@ -305,7 +334,12 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                             <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
                         ))}
                     </div>
-                    <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
+                    <a
+                      href="/project/ecolotri"
+                      className="mt-6 inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+                    >
+                      Voir le projet
+                    </a>
                 </div>
             </div>
 
@@ -323,7 +357,12 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                             <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
                         ))}
                     </div>
-                    <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
+                    <a
+                      href="/project/daramic"
+                      className="mt-6 inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+                    >
+                      Voir le projet
+                    </a>
                 </div>
             </div>
 
@@ -341,7 +380,12 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                             <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
                         ))}
                     </div>
-                    <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
+                    <a
+                      href="/project/bricobrac"
+                      className="mt-6 inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+                    >
+                      Voir le projet
+                    </a>
                 </div>
             </div>
 
@@ -359,7 +403,12 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                             <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
                         ))}
                     </div>
-                    <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
+                    <a
+                      href="/project/formatech"
+                      className="mt-6 inline-block px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+                    >
+                      Voir le projet
+                    </a>
                 </div>
             </div>
         </div>
@@ -769,7 +818,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                             </span>
                             <div>
                                 <p className="font-semibold">Localisation</p>
-                                <p className="text-gray-300 text-sm">Thanvillé, Grand-Est, France</p>
+                                <p className="text-gray-300 text-sm">Sélestat, Grand-Est, France</p>
                             </div>
                         </a>
                     </li>
@@ -797,11 +846,18 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                             download
                             className="flex items-center gap-4 p-3 rounded-lg transition-all duration-300 hover:bg-[#1f2a4d] hover:scale-105"
                         >
-                            <span className="bg-purple-600 p-2 rounded-full">📄</span>
+                          <span className="bg-purple-600 p-2 rounded-full">📄</span>
+                            <a
+                            href="https://drive.google.com/file/d/1buzlZ2ohKMsyxjBW_PSmYX_mBCuM6vIG/view?usp=sharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center space-x-2 hover:text-indigo-400 transition"
+                            >
                             <div>
-                                <p className="font-semibold">CV</p>
-                                <p className="text-gray-300 text-sm">Télécharger mon CV</p>
+                              <p className="font-semibold">Curriculum Vitae</p>
+                              <p className="text-gray-300 text-sm">Télécharger mon CV</p>
                             </div>
+                          </a>
                         </a>
                     </li>
                 </ul>
@@ -854,23 +910,20 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
               {/* Section Informations Légales (Style ajusté pour être minimaliste) */}
               {/* J'ai regroupé les liens dans un seul paragraphe pour minimiser l'impact sur le style général du pied de page. */}
               <p className="text-xs font-medium mb-4 space-x-4 text-gray-500">
-                  <a href="#mentions-legales" className="hover:text-indigo-400 transition duration-200">
-                      Mentions légales
-                  </a>
-                  <a href="#politique-confidentialite" className="hover:text-indigo-400 transition duration-200">
+                  <a href="/mentions-legales" className="hover:text-indigo-400 transition duration-200">
                       Politique de confidentialité
                   </a>
               </p>
 
               {/* Liens sociaux */}
               <div className="flex justify-center space-x-6 mb-4">
-                  <a href="https://linkedin.com/in/mickaelhoffer" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-indigo-400 transition transform hover:scale-110">
+                  <a href="https://www.linkedin.com/in/mickael-hoffer/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-indigo-400 transition transform hover:scale-110">
                       {/* Remplacer par IconLinkedin si vous utilisez la version complète de Home.jsx */}
                       <svg className="text-gray-300 hover:text-indigo-400" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                           <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM6 9H2v12h4V9zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
                       </svg>
                   </a>
-                  <a href="https://github.com/mickaelhoffer" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-indigo-400 transition transform hover:scale-110">
+                  <a href="https://github.com/mickaaa67" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-indigo-400 transition transform hover:scale-110">
                       {/* Remplacer par IconGithub si vous utilisez la version complète de Home.jsx */}
                       <svg className="text-gray-300 hover:text-indigo-400" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.087-.744.084-.693.084-.693 1.205.086 1.838 1.234 1.838 1.234 1.077 1.838 2.809 1.305 3.495.998.108-.77.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.467-2.381 1.236-3.221-.124-.303-.535-1.515.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.292-1.552 3.301-1.23 3.301-1.23.653 1.661.242 2.873.117 3.176.77.84 1.236 1.911 1.236 3.221 0 4.609-2.807 5.624-5.479 5.923.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.797.576C20.563 21.8 24 17.302 24 12c0-6.627-5.373-12-12-12z" />

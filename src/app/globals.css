@@ -142,4 +142,11 @@ body {
 
 
 
+.animate-breathe-text {
+  animation: breathe-text 4s ease-in-out infinite;
+}
+
+
+
+
  
