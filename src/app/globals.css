@@ -25,6 +25,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
 @keyframes fadeInFromBottom {
   0% {
     opacity: 0;
@@ -65,6 +66,80 @@ body {
     opacity: 0;
   }
 }
+
+@keyframes breathe {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-breathe {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe-card {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(79, 70, 229, 0.2);
+  }
+  50% {
+    transform: scale(1.01);
+    box-shadow: 0 0 40px rgba(79, 70, 229, 0.4);
+  }
+}
+
+.animate-breathe-card {
+  animation: breathe-card 4s ease-in-out infinite;
+}
+
+/* ========== Effets d'animation pour la section présentation ========== */
+
+/* Texte respirant léger */
+@keyframes breathe-text {
+  0%, 100% {
+    transform: scale(1);
+
+  }
+  50% {
+    transform: scale(1.01);
+  }
+}
+
+.animate-breathe-text {
+  animation: breathe-text 6s ease-in-out infinite;
+}
+
+/* Image flottante subtile */
+@keyframes float-image {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float-image 6s ease-in-out infinite;
+}
+
+/* Boutons légèrement pulsants */
+@keyframes pulse-button {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-button {
+  animation: pulse-button 3.5s ease-in-out infinite;
+}
+
 
 
  

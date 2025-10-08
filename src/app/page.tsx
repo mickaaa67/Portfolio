@@ -9,10 +9,9 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import ContactForm from './ContactForm';
 import React, { useState } from 'react';
 
-
-
 export default function Home() {
   useEffect(() => {
+    // Initialisation AOS restaurée avec vos paramètres
     AOS.init({
       offset: 200,
       duration: 550,
@@ -21,464 +20,472 @@ export default function Home() {
     });
   }, []);
 
+// Définition du composant TimelineItem (La logique reste la même pour la couleur et le style)
+interface TimelineItemProps {
+  title: React.ReactNode;
+  date: string;
+  description: React.ReactNode;
+  details: string[];
+  color: 'purple' | 'green';
+}
+
+const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, details, color }) => {
+  // Classes dynamiques pour la couleur
+  const dotColorClass = color === 'purple' ? 'bg-purple-500 border-purple-800' : 'bg-green-500 border-green-800';
+  const dateBgColorClass = color === 'purple' ? 'bg-purple-600' : 'bg-green-600';
+
+  // Alignement responsive : la carte garde un décalage sur md (pour la timeline)
+  const cardMarginClass = 'ml-0 md:ml-16';
+  const dotPositionClass = 'left-1/2 -ml-3 md:left-6';
+
   return (
-    <main className="bg-gray-100">
+    <div className="relative flex items-start w-full" data-aos="fade-up">
+      {/* Point centré sur la ligne */}
+      <div
+        className={`absolute ${dotPositionClass} top-0 w-6 h-6 rounded-full border-4 border-white shadow-lg z-10 ${dotColorClass}`}
+      ></div>
 
-      <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
-    <div className="max-w-7xl mx-auto flex justify-between items-center px-8 py-4">
-      <h1 className="text-2xl font-bold text-gray-800">Mickael Hoffer</h1>
-      <nav className="space-x-6">
-        <a href="#about" className="text-gray-600 hover:text-gray-800 font-medium">Accueil</a>
-        <a href="#services" className="text-gray-600 hover:text-gray-800 font-medium">Projets</a>
-        <a href="#lancement" className="text-gray-600 hover:text-gray-800 font-medium">Expérience</a>
-        <a href="#lancement" className="text-gray-600 hover:text-gray-800 font-medium">Compétences</a>
-        <a href="#lancement" className="text-gray-600 hover:text-gray-800 font-medium">Formation</a>
-        <a href="#lancement" className="text-gray-600 hover:text-gray-800 font-medium">Contact</a>
-      </nav>
-    </div>
-  </header>
+      {/* Carte --- on met 'relative' ici pour que la date absolute soit positionnée par rapport à la carte */}
+      <div
+        className={`w-full ${cardMarginClass} relative bg-white/10 backdrop-blur-sm text-white rounded-xl p-6 shadow-md transition-transform transform hover:scale-[1.02] hover:shadow-2xl duration-300`}
+      >
+        {/* En-tête (title + date). La date devient absolute sur md+ pour rester en haut à droite */}
+        <div className="mb-3">
+          <h3 className="text-xl font-bold mb-2 md:mb-0 pr-0 md:pr-28">{title}</h3>
 
-  {/* ================== HERO EN HAUT ================== */}
-  <header className="relative w-full min-h-screen flex flex-col justify-center px-8 bg-gray-100">
-  {/* Image de fond */}
-  <div className="absolute inset-0">
-    <img
-      src="/picture_presentation.jpg" // <-- ton image de fond ici
-      alt="Background"
-      className="w-full h-full object-cover"
-    />
-    <div className="absolute inset-0 bg-black/30"></div> {/* overlay léger */}
-  </div>
+          {/* Date : statique sur mobile, absolute en md+ */}
+          <span
+            className={`inline-block px-4 py-1 text-white text-sm rounded-full shadow-md font-semibold ${dateBgColorClass}
+                        md:absolute md:top-4 md:right-4`}
+            // md:top-4/md:right-4 -> ajuste ici si tu veux remonter/descendre ou décaler horizontalement
+          >
+            {date}
+          </span>
+        </div>
 
-  {/* Contenu hero */}
-  <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center text-center md:text-left">
-    
-    {/* Texte à gauche */}
-    <div className="md:w-3/5 md:mr-12" data-aos="fade-right">
-      <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-        Mickael Hoffer
-      </h1>
-      <h2 className="text-2xl md:text-3xl font-semibold text-gray-200 mb-8">
-        Développeur Web Full Stack Junior
-      </h2>
-      <p className="mt-4 text-lg text-gray-200 leading-relaxed text-justify">
-        Passionné par le développement web, j’aime transformer des idées en
-        applications modernes et performantes. Grâce à mon parcours en BTS SIO
-        et à mes expériences en projets concrets, je conçois des solutions
-        adaptées, élégantes et évolutives. J’accorde une attention particulière
-        à la qualité du code et à l’expérience utilisateur.
-      </p>
+        {/* description */}
+        <p className="text-gray-200 mb-3">{description}</p>
 
-      {/* Boutons */}
-      <div className="mt-8 flex justify-center md:justify-start gap-6">
-        <a
-          href="#projects"
-          className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition-transform transform hover:scale-105 font-semibold"
-        >
-          Voir mes projets
-        </a>
-        <a
-          href="#contact"
-          className="px-6 py-3 bg-gray-800 text-white rounded-lg shadow-md hover:bg-gray-900 transition-transform transform hover:scale-105 font-semibold"
-        >
-          Me contacter
-        </a>
+        {/* détails : list-disc avec padding-left pour hanging indent propre */}
+        {details && details.length > 0 && (
+          <ul className="list-disc pl-6 space-y-2 text-gray-300 leading-relaxed">
+            {details.map((detail, index) => (
+              <li key={index} className="whitespace-pre-line">{detail}</li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
+  );
+};
 
-    {/* Image à droite */}
-    <div className="mt-4 md:mt-0 md:w-2/5 flex justify-center md:ml-50" data-aos="fade-left">
-      <div className="relative w-full max-w-sm overflow-hidden rounded-xl shadow-lg group">
-        {/* Overlay dégradé */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-transparent z-10"></div>
+  return (
+    <main className="bg-gray-100 ">
 
-        {/* Image */}
-        <img
-          src="/about_me.webp" // <-- image originale à droite
-          alt="Jeune développeur passionné travaillant sur un ordinateur"
-          className="w-full rounded-xl group-hover:scale-110 transition-transform duration-300"
-        />
+      <header 
+        className="fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-black/30 shadow-2xl"
+      >
+        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+          
+          {/* Nom/Logo - Le texte est BLANC pour contraster avec le fond sombre */}
+          <h1 className="text-2xl font-bold text-white tracking-wider hover:text-indigo-400 transition duration-300">
+            Mickael Hoffer
+          </h1>
+          
+          {/* Navigation (Masquée sur Mobile, Visible sur MD) */}
+          <nav className="hidden md:flex space-x-8">
+            {/* ⚠️ CORRECTION DES LIENS (href) APPLIQUÉE ICI */}
+            <a href="#about" className="text-gray-200 hover:text-indigo-400 font-medium transition duration-300">
+              Accueil
+            </a>
+            <a href="#about" className="text-gray-200 hover:text-indigo-400 font-medium transition duration-300">
+              À propos
+            </a>
+            <a href="#projects" className="text-gray-200 hover:text-indigo-400 font-medium transition duration-300">
+              Projets
+            </a>
+            <a href="#parcours" className="text-gray-200 hover:text-indigo-400 font-medium transition duration-300">
+              Parcours
+            </a>
+            <a href="#competences" className="text-gray-200 hover:text-indigo-400 font-medium transition duration-300">
+              Compétences
+            </a>
+            {/* Bouton de contact mis en évidence */}
+            <a 
+              href="#contact" 
+              className="text-white bg-indigo-600 px-3 py-1 rounded-full text-sm font-semibold hover:bg-indigo-700 transition duration-300 shadow-lg"
+            >
+              Contact
+            </a>
+          </nav>
 
-        {/* Contenu par-dessus (optionnel) */}
-        <div className="absolute inset-0 flex items-center justify-center p-4 z-20"></div>
-      </div>
-    </div>
-  </div>
-</header>
+          {/* Icône de Menu (Pour Mobile) - Vous devrez implémenter la logique d'ouverture/fermeture d'un menu latéral ou modal pour cela */}
+          {/* <div className="md:hidden">
+            <button className="text-white text-2xl">
+              <svg fill="currentColor" viewBox="0 0 20 20" className="w-6 h-6">...</svg>
+            </button>
+          </div> */}
+        </div>
+      </header>
+
+      {/* ================== HERO EN HAUT ================== */}
+      <header className="relative w-full min-h-screen flex flex-col justify-center px-8 bg-gray-100">
+        {/* Image de fond */}
+        <div className="absolute inset-0">
+          <img
+            src="/picture_presentation.jpg"
+            alt="Background"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/30"></div>
+        </div>
+
+        {/* Contenu hero */}
+        <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center text-center md:text-left">
+          
+          {/* Texte à gauche */}
+          <div className="md:w-3/5 md:mr-12 animate-breathe-text" data-aos="fade-right">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
+              Mickael Hoffer
+            </h1>
+
+            <h2 className="text-2xl md:text-3xl font-semibold text-indigo-300 mb-8 drop-shadow-md">
+              Développeur Web
+            </h2>
+
+            {/* CORRECTION DES ESPACES ET CONFIRMATION DE LA POLICE ICI */}
+            <p className="mt-4 text-lg text-gray-100 leading-relaxed text-justify tracking-wide">
+              Passionné par le développement web, j’aime transformer des idées en applications modernes et performantes. Grâce à mon parcours en BTS SIO et à mes expériences en projets concrets, je conçois des solutions adaptées, élégantes et évolutives. J’accorde une attention particulière à la qualité du code et à l’expérience utilisateur.
+            </p>
+
+            {/* Boutons */}
+            <div className="mt-8 flex justify-center md:justify-start gap-6">
+              <a
+                href="#projects"
+                className="px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition-transform transform hover:scale-105 font-semibold animate-pulse-button"
+              >
+                Voir mes projets
+              </a>
+              <a
+                href="#contact"
+                className="px-6 py-3 bg-slate-800 text-white rounded-lg shadow-md hover:bg-slate-900 transition-transform transform hover:scale-105 font-semibold animate-pulse-button"
+              >
+                Me contacter
+              </a>
+            </div>
+          </div>
 
 
+          {/* Image à droite */}
+          <div className="mt-4 md:mt-0 md:w-2/5 flex justify-center md:ml-50 animate-float" data-aos="fade-left">
+            <div className="relative w-full max-w-sm overflow-hidden rounded-xl shadow-lg group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-transparent z-10"></div>
+              <img
+                src="/about_me.webp"
+                alt="Jeune développeur passionné travaillant sur un ordinateur"
+                className="w-full rounded-xl group-hover:scale-110 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 flex flex-col justify-end p-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40">
+                <div className="flex justify-center space-x-4">
+                  <a href="https://linkedin.com/in/mickaelhoffer" target="_blank" rel="noopener noreferrer" className="text-white hover:text-indigo-400 transition transform hover:scale-110">
+                    <FaLinkedin size={30} />
+                  </a>
+                  <a href="https://github.com/mickaelhoffer" target="_blank" rel="noopener noreferrer" className="text-white hover:text-indigo-400 transition transform hover:scale-110">
+                    <FaGithub size={30} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <br /><br /><br /><br /><br />
       {/* ================== Services Section ================== */}
-      <section id="A propos" className="py-20 bg-white w-full px-8 mt-12">
-        <div className="text-center max-w-4xl mx-auto mb-12" data-aos="fade-up">
-          <h2 className="text-4xl font-extrabold text-gray-800">A propos de moi</h2>
-          <p className="mt-4 text-lg text-gray-600">
-            En quelques mots
-          </p>
-          <br /><br />
-          <p className="mt-4 text-lg text-gray-600">
-            Jeune développeur de 22 ans, passionné par le développement web, titulaire d'un BTS Services Informatiques aux Organisations option Solutions Logicielles et Applications Métiers qui m'a permis de structuré mes compétences.
-          </p>
-          <p className="mt-4 text-lg text-gray-600">
-          Fort de plusieurs réalisations qui témoignent de ma motivation, je recherche activement un poste de développeur web en alternance pour octobre 2025 et pour une durée de 1 an, dans le cadre de ma préparation à la Licence professionnelle Développement Web Communication et Apprentissages.
-          </p>
-        </div>
+      <section id="about" className="relative py-16 bg-gray-100 text-gray-900">
+        <div className="max-w-4xl mx-auto px-6">
+          {/* Titre avec effet respirant */}
+          <h2
+            className="text-3xl font-bold text-center bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text mb-8 animate-breathe"
+          >
+            À propos de moi
+          </h2>
 
-        {/* Section Site Web */}
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 mb-20">
-          <div className="md:w-1/2 flex justify-center" data-aos="fade-right">
-            <div className="relative overflow-hidden rounded-xl shadow-xl group transform transition-transform duration-300 hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-transparent z-10"></div>
-              <img
-                src="/responsive_picture.jpg"
-                alt="Image de démonstration d'un site web réactif sur différents appareils"
-                className="w-full rounded-xl"
-              />
-            </div>
-          </div>
-
-          <div className="md:w-1/2 text-center md:text-left" data-aos="fade-left">
-            <h3 className="text-3xl font-bold text-gray-800">Sites Web</h3>
-            <p className="mt-2 text-xl text-gray-600">
-              Créez une présence en ligne impactante avec des sites web modernes et performants.
+          {/* Contenu */}
+          <div className="bg-white rounded-2xl shadow-lg p-8 transition-transform duration-300 animate-breathe-card">
+            <p className="text-lg leading-relaxed mb-4">
+              Jeune développeur de 22 ans, passionné par le développement web, 
+              titulaire d’un BTS Services Informatiques aux Organisations option 
+              Solutions Logicielles et Applications Métiers qui m’a permis de 
+              structurer mes compétences.
             </p>
-            <div className="mt-8">
-              <h4 className="text-2xl font-semibold text-gray-800">Sites Vitrines</h4>
-              <p className="mt-4 text-gray-700">
-                Un site vitrine est bien plus qu'une simple page web ; c'est votre carte de visite numérique. 
-                Pour votre entreprise, il représente l'opportunité de présenter vos produits ou services, 
-                de partager votre histoire, de bâtir la confiance avec vos clients et d'être visible 24h/24. 
-                C'est l'outil essentiel pour attirer de nouveaux prospects et consolider votre image de marque.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Section Site responsive */}
-        <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
-          <div className="md:w-1/2 text-center md:text-left" data-aos="fade-right">
-            <h3 className="text-3xl font-bold text-gray-800">Site responsive</h3>
-            <p className="mt-2 text-xl text-gray-600">
-              Application mobile responsive design, lisible sur tous les appareils : PC, Android, iOS, tablette.
+            <p className="text-lg leading-relaxed mb-4">
+              Fort de plusieurs réalisations qui témoignent de ma motivation, 
+              <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text font-semibold"> je recherche activement un poste de développeur web en alternance </span>
+              pour octobre 2025 et pour une durée de 1 an, dans le cadre de ma 
+              préparation à la Licence Professionnelle Développement Web, 
+              Communication et Apprentissages.
             </p>
-            <div className="mt-6 space-y-4">
-              <div data-aos="fade-up" data-aos-delay="200">
-                <h5 className="text-xl font-bold text-gray-800">Applications natives</h5>
-                <p className="mt-1 text-gray-700">
-                  Développement natif pour des performances optimales.
-                </p>
-              </div>
-              <div data-aos="fade-up" data-aos-delay="400">
-                <h5 className="text-xl font-bold text-gray-800">Sécurité Avancée</h5>
-                <p className="mt-1 text-gray-700">
-                  Protection des données et authentification robuste.
-                </p>
-              </div>
-              <div data-aos="fade-up" data-aos-delay="600">
-                <h5 className="text-xl font-bold text-gray-800">Engagement Utilisateur</h5>
-                <p className="mt-1 text-gray-700">
-                  Notifications push et fonctionnalités interactives.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="md:w-1/2 flex justify-center" data-aos="fade-left">
-            <div className="relative overflow-hidden rounded-xl shadow-xl group transform transition-transform duration-300 hover:scale-105">
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-transparent z-10"></div>
-              <img
-                src="/mobile_software.jpg"
-                alt="Image de démonstration d'une application mobile"
-                className="w-full rounded-xl"
-              />
-            </div>
+            <p className="text-lg leading-relaxed">
+              Mon objectif est de continuer à progresser afin de devenir <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text font-semibold">développeur web full stack</span>. J'aime relever de nouveaux défis 
+              techniques et contribuer à des projets concrets tout en apportant mon 
+              énergie et ma créativité.
+            </p>
           </div>
         </div>
       </section>
-
-      {/* ================== Lancer votre projet ================== */}
-      <section id="lancement" className="py-20 bg-white w-full px-8 text-center">
-        <h2 className="text-3xl font-bold text-gray-800" data-aos="fade-up" data-aos-delay="100">
-          Prêt à lancer votre projet ?
-        </h2>
-        <p className="mt-2 text-xl text-gray-600" data-aos="fade-up" data-aos-delay="200">
-          Découvrez nos tarifs ou contactez-nous pour en discuter
-        </p>
-        <div className="mt-12 md:mt-16 flex justify-center gap-8" data-aos="fade-up" data-aos-delay="300">
-          <Link href="/tarif" className="px-8 py-5 bg-blue-600 text-white rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:bg-blue-700 font-semibold">
-            Demander un Devis
-          </Link>
-          <Link href="#btn-contact" className="px-8 py-5 bg-gray-800 text-white rounded-xl shadow-lg transform transition duration-300 hover:scale-105 hover:bg-gray-900 font-semibold">
-            Nous contacter
-          </Link>
-        </div>
-        <div className="flex justify-center mt-12" data-aos="fade-right">
-          <div className="relative w-full max-w-[1100px] overflow-hidden rounded-xl shadow-xl group transform transition-transform duration-300 hover:scale-105">
-            <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-transparent z-10"></div>
-            <img
-              src="/project_digitales.jpg"
-              alt="Image de démonstration d'un site web réactif sur différents appareils"
-              className="w-full rounded-xl"
-            />
-          </div>
-        </div>
-      </section>
-
+      <br /><br /><br /><br /><br />
       {/* ================== Mes Projets ================== */}
       <section id="projects" className="py-20 bg-white w-full px-8">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-12" data-aos="fade-up">
-          Mes Projets
+        <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
+            Mes Projets
         </h2>
 
         <div className="grid md:grid-cols-3 gap-12">
-          {/* Projet ONF */}
-          <div
-            className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105"
-            data-aos="fade-up"
-          >
-            <div className="relative h-48 overflow-hidden">
-              <img
-                src="/logoONF.jpg"
-                alt="Site e-commerce ONF"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+            {/* Projet ONF */}
+            <div
+                className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105"
+            >
+                <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+                    <img
+                        src="/logoONF.jpg"
+                        alt="Site e-commerce ONF"
+                        className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300"
+                        style={{ padding: '10px' }} // Optionnel: ajoute un léger padding visuel
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                </div>
+                <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800">Site e-commerce pour l'ONF</h3>
+                    <p className="mt-2 text-gray-600 text-sm">
+                        Site de vente de vêtements et d'équipements de protection individuelle (EPI).
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                        {["PHP", "MySQL", "JavaScript", "Bootstrap", "GitHub"].map((tech) => (
+                            <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
+                    <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">
+                        Voir le projet
+                    </button>
+                </div>
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-800">Site e-commerce pour l'ONF</h3>
-              <p className="mt-2 text-gray-600 text-sm">
-                Site de vente de vêtements et d'équipements de protection individuelle (EPI).
-              </p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {["PHP", "MySQL", "JavaScript", "Bootstrap", "GitHub"].map((tech) => (
-                  <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">
-                Voir le projet
-              </button>
-            </div>
-          </div>
 
-          {/* Projet Jung Logistique */}
-          <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105" data-aos="fade-up">
-            <div className="relative h-48 overflow-hidden">
-              <img src="/logoJungLogistique.jpg" alt="Optimisation back-end Jung Logistique" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+            {/* Projet Jung Logistique */}
+            <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105">
+                <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+                    <img src="/logoJungLogistique.png" alt="Optimisation back-end Jung Logistique" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                </div>
+                <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800">Optimisation back-end chez Jung Logistique</h3>
+                    <p className="mt-2 text-gray-600 text-sm">Optimisation de l'architecture back-end/front-end de l'extranet de l'entreprise.</p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                        {["C#", "JavaScript", "GitHub"].map((tech) => (
+                            <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
+                        ))}
+                    </div>
+                    <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
+                </div>
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-800">Optimisation back-end chez Jung Logistique</h3>
-              <p className="mt-2 text-gray-600 text-sm">Optimisation de l'architecture back-end/front-end de l'extranet de l'entreprise.</p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {["C#", "JavaScript", "GitHub"].map((tech) => (
-                  <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
-                ))}
-              </div>
-              <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
-            </div>
-          </div>
 
-          {/* Projet Écolotri */}
-          <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105" data-aos="fade-up">
-            <div className="relative h-48 overflow-hidden">
-              <img src="/logoEcolotri.jpg" alt="Écolotri" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+            {/* Projet Écolotri */}
+            <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105">
+                <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+                    <img src="/logoEcolotri.jpg" alt="Écolotri" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                </div>
+                <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800">Écolotri</h3>
+                    <p className="mt-2 text-gray-600 text-sm">Site web pour la gestion et le suivi des pesées de déchets collectés.</p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                        {["HTML", "CSS", "PHP", "MySQL", "GitHub"].map((tech) => (
+                            <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
+                        ))}
+                    </div>
+                    <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
+                </div>
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-800">Écolotri</h3>
-              <p className="mt-2 text-gray-600 text-sm">Site web pour la gestion et le suivi des pesées de déchets collectés.</p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {["HTML", "CSS", "PHP", "MySQL", "GitHub"].map((tech) => (
-                  <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
-                ))}
-              </div>
-              <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
-            </div>
-          </div>
 
-          {/* Projet ServiceNow */}
-          <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105" data-aos="fade-up">
-            <div className="relative h-48 overflow-hidden">
-              <img src="/logoServiceNOOOW.png" alt="ServiceNow" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+            {/* Projet ServiceNow */}
+            <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105">
+                <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+                    <img src="/logoServiceNOOOW.png" alt="ServiceNow" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                </div>
+                <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800">ServiceNow</h3>
+                    <p className="mt-2 text-gray-600 text-sm">Optimisation de la gestion des actifs applicatifs et découverte de la supervision IT (SquaredUp, SCOM).</p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                        {["ServiceNow", "SquaredUp", "SCOM", "Excel"].map((tech) => (
+                            <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
+                        ))}
+                    </div>
+                    <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
+                </div>
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-800">ServiceNow</h3>
-              <p className="mt-2 text-gray-600 text-sm">Optimisation de la gestion des actifs applicatifs et découverte de la supervision IT (SquaredUp, SCOM).</p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {["ServiceNow", "SquaredUp", "SCOM", "Excel"].map((tech) => (
-                  <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
-                ))}
-              </div>
-              <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
-            </div>
-          </div>
 
-          {/* Projet BricoBrac */}
-          <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105" data-aos="fade-up">
-            <div className="relative h-48 overflow-hidden">
-              <img src="/logoBricoBrac.png" alt="BricoBrac" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+            {/* Projet BricoBrac */}
+            <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105">
+                <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+                    <img src="/logoBricoBrac.png" alt="BricoBrac" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                </div>
+                <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800">BricoBrac</h3>
+                    <p className="mt-2 text-gray-600 text-sm">Site web pour une chaîne de magasins de bricolage familial.</p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                        {["HTML", "CSS", "PHP", "MySQL", "JavaScript", "Trello", "GitHub"].map((tech) => (
+                            <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
+                        ))}
+                    </div>
+                    <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
+                </div>
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-800">BricoBrac</h3>
-              <p className="mt-2 text-gray-600 text-sm">Site web pour une chaîne de magasins de bricolage familial.</p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {["HTML", "CSS", "PHP", "MySQL", "JavaScript", "Trello", "GitHub"].map((tech) => (
-                  <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
-                ))}
-              </div>
-              <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
-            </div>
-          </div>
 
-          {/* Projet Formatech */}
-          <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105" data-aos="fade-up">
-            <div className="relative h-48 overflow-hidden">
-              <img src="/LogoFormaTech.png" alt="Formatech" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
-              <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+            {/* Projet Formatech */}
+            <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105">
+                <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
+                    <img src="/LogoFormaTech.png" alt="Formatech" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                </div>
+                <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800">Formatech</h3>
+                    <p className="mt-2 text-gray-600 text-sm">Site web pour la gestion des formations, modules et cours au sein d'un organisme de formation.</p>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                        {["HTML", "CSS", "PHP", "MySQL", "JavaScript", "Trello", "GitHub"].map((tech) => (
+                            <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
+                        ))}
+                    </div>
+                    <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
+                </div>
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-800">Formatech</h3>
-              <p className="mt-2 text-gray-600 text-sm">Site web pour la gestion des formations, modules et cours au sein d'un organisme de formation.</p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {["HTML", "CSS", "PHP", "MySQL", "JavaScript", "Trello", "GitHub"].map((tech) => (
-                  <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
-                ))}
-              </div>
-              <button className="mt-6 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition">Voir le projet</button>
-            </div>
-          </div>
         </div>
       </section>
-
+       <br /><br /><br /><br /><br />
       {/* ================== Mon Expérience ================== */}
-      <section id="experience" className="py-20 bg-gray-50 w-full px-8">
-        <h2 className="text-4xl font-bold text-center text-gray-800 mb-12" data-aos="fade-up">
-          Mon parcours
+      <section id="parcours" className="py-20 w-full px-8 bg-gradient-to-br from-[#0a0f1c] via-[#1a103d] to-[#2a1a4a]">
+        <h2 className="text-4xl font-bold text-center text-white mb-16" data-aos="fade-up">
+          Mon Parcours
         </h2>
 
-        <div className="max-w-6xl mx-auto flex flex-col space-y-12">
+        <div className="relative max-w-5xl mx-auto">
+          {/* Ligne verticale PRINCIPALE ajustée */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 top-[5.8rem] bottom-[0rem] border-l-4 border-gray-700 md:left-5.5 md:translate-x-0"></div>
 
-          {/* ================== EXPÉRIENCES ================== */}
-          <h3 className="text-3xl font-bold text-gray-800 mb-6" data-aos="fade-up">Expériences Professionnelles</h3>
+          {/* Conteneur des éléments de la timeline: -mb-4 est ajouté ici pour aligner parfaitement le bas de la ligne */}
+          <div className="space-y-12 -mb-4">
 
-          {/* Stage S2i Evolution */}
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-8" data-aos="fade-up">
-            <div className="md:w-1/3 flex flex-col items-start md:items-end space-y-3 order-2 md:order-1">
-              <span className="px-4 py-2 bg-blue-600 text-white rounded-full font-semibold">Stage Informatique</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">S2i Evolution</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">1 mois</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">Octobre - Novembre 2024</span>
-            </div>
-            <div className="md:w-2/3 bg-white rounded-xl shadow-lg p-6 order-1 md:order-2">
-              <h4 className="text-xl font-bold text-gray-800 mb-2">Création de sites web</h4>
-              <p className="text-gray-600 mb-4">Développement et mise en ligne de sites web pour différents clients, participation à toutes les étapes de conception.</p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2">
-                <li>Analyse des besoins clients et conception fonctionnelle.</li>
-                <li>Développement front-end et intégration responsive.</li>
-                <li>Maintenance et optimisation des sites existants.</li>
-              </ul>
-            </div>
+            {/* NOUVEAU TITRE DE SECTION: FORMATIONS */}
+            <h3 className="ml-18 text-2xl font-bold text-center  md:text-left text-green-400 mb6 border-b border-gray-700 pb-2">Formations</h3>
+
+            {/* -------------------------------------------------------------------------------------------------- */}
+            {/* FORMATIONS - POINTS EN VERT (GREEN-500) */}
+            {/* -------------------------------------------------------------------------------------------------- */}
+
+            {/* === Formations - BTS Alternance (FORMATION) === */}
+            <TimelineItem
+              title={
+                <>
+                  Brevet de Technicien Supérieur  <br /> Services Informatiques aux Organisations  <br />
+                  option Solutions Logicielles et Applications Métiers, IRIS MediaSchool
+                </>
+              }
+              date="2021-2024"
+              description=""
+              details={[
+                "Conception et développement d’applications (Bloc 2 : Option SLAM)",
+                "Mathématiques pour l'informatique",
+                "Ateliers de professionnalisation"
+              ]}
+              color="green"
+            />
+
+
+            {/* === Formations - Bac Techno (FORMATION) === */}
+            <TimelineItem
+              title={
+                <>
+                  Baccalauréat Technologique  <br /> Sciences et Technologies de l'Industrie et du
+                  Développement Durable
+                  <br />Lycée Polyvalent Jean-Baptiste Schwilgué
+                </>
+              }
+              date="2018-2021"
+              description=""
+              details={[
+                "Systèmes d'Information et Numérique (SIN) Innovation",
+                "Technologique et Éco-conception (ITEC - Tronc Commun)",
+                "Mathématiques (appliquées à l’informatique)"
+              ]}
+              color="green"
+            />
+            
+            {/* Petit espace de séparation */}
+            <div className="h-8"></div>
+
+
+            {/* NOUVEAU TITRE DE SECTION: EXPÉRIENCES PROFESSIONNELLES */}
+            <h3 className="ml-18 text-2xl text-2xl font-bold text-center md:text-left text-purple-400 mb-6 border-b border-gray-700 pb-2">Expériences Professionnelles (Stages / Alternance)</h3>
+
+
+            {/* -------------------------------------------------------------------------------------------------- */}
+            {/* EXPÉRIENCES PROFESSIONNELLES (Stages/Alternance) - POINTS EN VIOLET (PURPLE-500) */}
+            {/* -------------------------------------------------------------------------------------------------- */}
+            
+            {/* === Stage S2i Evolution (EXPÉRIENCE) === */}
+            <TimelineItem
+              title="Stage en Informatique - S2I Evolution"
+              date="Octobre - Novembre 2024"
+              description="Strasbourg - Durée: 8 semaines"
+              details={[
+                "Développement collaboratif d'un site web responsive en utilisant les frameworks Laravel, React.js et Angular pour un centre de coworking en ligne automatisant les processus de réservation pour 2000 utilisateurs.",
+                "Contribution à l'optimisation des fonctionnalités du site, en garantissant une expérience utilisateur fluide et sécurisée.",
+              ]}
+              color="purple"
+            />
+
+            {/* === Assistant Projet Jung Logistique (EXPÉRIENCE) === */}
+            <TimelineItem
+              title="Assistant Projet en Alternance - Jung Logistique"
+              date="Septembre 2023 - Septembre 2024"
+              description="Sélestat - Durée: 1 an"
+              details={[
+                "Développement et refonte de vues existantes de l'ancien site interne en utilisant le framework .NET, avec les langages HTML/CSS, JavaScript, Ajax et SQL, pour une interface utilisateur dynamique",
+                "Développement d'une nouvelle vue de gestion de stock pour un dépôt spécifique, améliorant la visibilité et le suivi des marchandises.",
+                "Optimisation des requêtes SQL, améliorant significativement les performances detraitement des données et leur fiabilité."
+              ]}
+              color="purple"
+            />
+
+            {/* === Stage ONF (EXPÉRIENCE) === */}
+            <TimelineItem
+              title="Stage en Informatique - l'Office National des Forêts (ONF)"
+              date="Février - Avril 2023"
+              description="Colmar - Durée: 6 semaines"
+              details={[
+                "Conception et développement d'un site e-commerce responsive en PHP, SQL, HTML/CSS, JavaScript ainsi qu’avec le framework open source Vue.js, pour la commercialisation d'équipements de protection individuelle de l'ONF. Déployé sur l'ensemble de la région Grand Est, pour environ 500 utilisateurs.",
+                "Gestion de l'intégration des données produits et des interactions utilisateur, garantissant une expérience d'achat fluide.",
+              ]}
+              color="purple"
+            />
+
+            {/* === Stage Daramic (EXPÉRIENCE) === */}
+            <TimelineItem
+              title="Stage en Informatique - Daramic"
+              date="Mai - Juillet 2022"
+              description="Sélestat - Durée: 5 semaines"
+              details={[
+                "Révision et maintenance des bases de données pour en améliorer la performance.",
+                "Supervision des systèmes via Squared Up.",
+                "Analyse et optimisation des processus informatiques."
+              ]}
+              color="purple"
+            />
+
           </div>
-
-          {/* Assistant Projet Jung Logistique */}
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-8" data-aos="fade-up">
-            <div className="md:w-1/3 flex flex-col items-start md:items-end space-y-3 order-2 md:order-1">
-              <span className="px-4 py-2 bg-blue-600 text-white rounded-full font-semibold">Assistant Projet en Alternance</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">Jung Logistique</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">1 an</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">Septembre 2023 - Septembre 2024</span>
-            </div>
-            <div className="md:w-2/3 bg-white rounded-xl shadow-lg p-6 order-1 md:order-2">
-              <h4 className="text-xl font-bold text-gray-800 mb-2">Optimisation back-end / Front-end</h4>
-              <p className="text-gray-600 mb-4">Projet d'optimisation de l'architecture back-end/front-end de l'extranet de l'entreprise.</p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2">
-                <li>Refonte des processus back-end pour améliorer la performance.</li>
-                <li>Collaboration avec l’équipe front-end pour la compatibilité des modules.</li>
-                <li>Gestion des versions et suivi sur GitHub.</li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Stage L'ONF */}
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-8" data-aos="fade-up">
-            <div className="md:w-1/3 flex flex-col items-start md:items-end space-y-3 order-2 md:order-1">
-              <span className="px-4 py-2 bg-blue-600 text-white rounded-full font-semibold">Stage Informatique</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">L'ONF</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">3 mois</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">Février - Avril 2023</span>
-            </div>
-            <div className="md:w-2/3 bg-white rounded-xl shadow-lg p-6 order-1 md:order-2">
-              <h4 className="text-xl font-bold text-gray-800 mb-2">Gestion des forêts</h4>
-              <p className="text-gray-600 mb-4">Participation à la digitalisation de la gestion forestière et au suivi des projets internes.</p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2">
-                <li>Création et maintenance de bases de données.</li>
-                <li>Suivi et analyse des pesées et stocks forestiers.</li>
-                <li>Développement de scripts pour automatiser certaines tâches.</li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Stage Daramic */}
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-8" data-aos="fade-up">
-            <div className="md:w-1/3 flex flex-col items-start md:items-end space-y-3 order-2 md:order-1">
-              <span className="px-4 py-2 bg-blue-600 text-white rounded-full font-semibold">Stage Informatique</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">Daramic</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">3 mois</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">Mai - Juillet 2022</span>
-            </div>
-            <div className="md:w-2/3 bg-white rounded-xl shadow-lg p-6 order-1 md:order-2">
-              <h4 className="text-xl font-bold text-gray-800 mb-2">Optimisation gestion actifs applicatifs</h4>
-              <p className="text-gray-600 mb-4">Découverte de la supervision IT et contribution à l'optimisation des outils internes.</p>
-              <ul className="list-disc list-inside text-gray-700 space-y-2">
-                <li>Analyse des flux existants et amélioration sur ServiceNow.</li>
-                <li>Découverte des outils de supervision IT : SquaredUp, SCOM.</li>
-                <li>Création de rapports automatisés et centralisation des informations.</li>
-              </ul>
-            </div>
-          </div>
-
-          {/* ================== FORMATIONS ================== */}
-          <h3 className="text-3xl font-bold text-gray-800 mt-16 mb-6" data-aos="fade-up">Formations</h3>
-
-          {/* Formation BTS Alternance */}
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-8" data-aos="fade-up">
-            <div className="md:w-1/3 flex flex-col items-start md:items-end space-y-3 order-2 md:order-1">
-              <span className="px-4 py-2 bg-green-600 text-white rounded-full font-semibold">BTS SIO - Alternance</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">IRIS MediaSchool, Strasbourg</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">Septembre 2023 - Juillet 2024</span>
-            </div>
-            <div className="md:w-2/3 bg-white rounded-xl shadow-lg p-6 order-1 md:order-2">
-              <p className="text-gray-600 mb-4">Brevet de Technicien Supérieur Services Informatiques aux Organisations option Solutions Logicielles et Applications Métiers en Alternance.</p>
-            </div>
-          </div>
-
-          {/* Formation BTS Initial */}
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-8" data-aos="fade-up">
-            <div className="md:w-1/3 flex flex-col items-start md:items-end space-y-3 order-2 md:order-1">
-              <span className="px-4 py-2 bg-green-600 text-white rounded-full font-semibold">BTS SIO - Initial</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">Lycée Camille Sée, Colmar</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">Septembre 2021 - Juillet 2023</span>
-            </div>
-            <div className="md:w-2/3 bg-white rounded-xl shadow-lg p-6 order-1 md:order-2">
-              <p className="text-gray-600 mb-4">Brevet de Technicien Supérieur Services Informatiques aux Organisations option Solutions Logicielles et Applications Métiers en Initial.</p>
-            </div>
-          </div>
-
-          {/* Formation Bac Technologique */}
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-8" data-aos="fade-up">
-            <div className="md:w-1/3 flex flex-col items-start md:items-end space-y-3 order-2 md:order-1">
-              <span className="px-4 py-2 bg-green-600 text-white rounded-full font-semibold">Baccalauréat Technologique</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">Lycée Jean-Baptiste Schwilgué, Sélestat</span>
-              <span className="px-4 py-2 bg-gray-200 text-gray-800 rounded-full">Septembre 2018 - Juillet 2021</span>
-            </div>
-            <div className="md:w-2/3 bg-white rounded-xl shadow-lg p-6 order-1 md:order-2">
-              <p className="text-gray-600 mb-4">Sciences et Technologies de l'Industrie et du Développement Durable option Systèmes d'Information et Numérique.</p>
-            </div>
-          </div>
-
         </div>
       </section>
       {/* ================== Mes compétences ================== */}
@@ -837,57 +844,44 @@ export default function Home() {
       </section>                
       {/* ================== Footer ================== */}
       <section>
-        <footer className="bg-gray-900 text-gray-300 py-10 mt-20">
-          <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            {/* Bloc gauche : présentation */}
-            <div>
-              <h2 className="text-2xl font-bold text-white">Mickael Hoffer</h2>
-              <p className="mt-2 text-gray-400 text-sm">
-                Développeur Web passionné par la création d’expériences numériques
-                modernes, intuitives et performantes.
+        {/* ================== FOOTER (Adapté au style sombre) ================== */}
+        <footer className="bg-gray-900 text-white py-8 border-t border-gray-700">
+          <div className="max-w-6xl mx-auto text-center px-8">
+              <p className="text-sm text-gray-400 mb-4">
+                  Conçu et développé par Mickael Hoffer.
               </p>
-            </div>
+              
+              {/* Section Informations Légales (Style ajusté pour être minimaliste) */}
+              {/* J'ai regroupé les liens dans un seul paragraphe pour minimiser l'impact sur le style général du pied de page. */}
+              <p className="text-xs font-medium mb-4 space-x-4 text-gray-500">
+                  <a href="#mentions-legales" className="hover:text-indigo-400 transition duration-200">
+                      Mentions légales
+                  </a>
+                  <a href="#politique-confidentialite" className="hover:text-indigo-400 transition duration-200">
+                      Politique de confidentialité
+                  </a>
+              </p>
 
-            {/* Bloc centre : navigation */}
-            <div className="flex flex-col items-center">
-              <h3 className="text-lg font-semibold text-white mb-3">Navigation</h3>
-              <ul className="space-y-2">
-                <li><a href="#home" className="hover:text-white transition">Accueil</a></li>
-                <li><a href="#projects" className="hover:text-white transition">Projets</a></li>
-                <li><a href="#experience" className="hover:text-white transition">Expérience</a></li>
-                <li><a href="#skills" className="hover:text-white transition">Compétences</a></li>
-                <li><a href="#contact" className="hover:text-white transition">Contact</a></li>
-              </ul>
-            </div>
-
-            {/* Bloc droit : réseaux sociaux */}
-            <div className="flex flex-col items-center md:items-end">
-              <h3 className="text-lg font-semibold text-white mb-3">Réseaux sociaux</h3>
-              <div className="flex gap-6">
-                <a
-                  href="https://www.linkedin.com/in/mickaelhoffer"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-gray-400 hover:text-blue-500 transform hover:scale-125 transition"
-                >
-                  <FaLinkedin color="w-7 h-7" />
-                </a>
-                <a
-                  href="https://github.com/mickaelhoffer"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-gray-400 hover:text-white transform hover:scale-125 transition"
-                >
-                  <FaGithub color="w-7 h-7" />
-                </a>
+              {/* Liens sociaux */}
+              <div className="flex justify-center space-x-6 mb-4">
+                  <a href="https://linkedin.com/in/mickaelhoffer" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-indigo-400 transition transform hover:scale-110">
+                      {/* Remplacer par IconLinkedin si vous utilisez la version complète de Home.jsx */}
+                      <svg className="text-gray-300 hover:text-indigo-400" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM6 9H2v12h4V9zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+                      </svg>
+                  </a>
+                  <a href="https://github.com/mickaelhoffer" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-indigo-400 transition transform hover:scale-110">
+                      {/* Remplacer par IconGithub si vous utilisez la version complète de Home.jsx */}
+                      <svg className="text-gray-300 hover:text-indigo-400" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.087-.744.084-.693.084-.693 1.205.086 1.838 1.234 1.838 1.234 1.077 1.838 2.809 1.305 3.495.998.108-.77.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.467-2.381 1.236-3.221-.124-.303-.535-1.515.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.292-1.552 3.301-1.23 3.301-1.23.653 1.661.242 2.873.117 3.176.77.84 1.236 1.911 1.236 3.221 0 4.609-2.807 5.624-5.479 5.923.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.797.576C20.563 21.8 24 17.302 24 12c0-6.627-5.373-12-12-12z" />
+                      </svg>
+                  </a>
               </div>
-            </div>
-          </div>
-
-          {/* Ligne séparation + copyright */}
-          <div className="border-t border-gray-700 mt-10 pt-6 text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} Mickael Hoffer — Tous droits réservés.
+              
+              {/* Copyright */}
+              <p className="text-xs text-gray-500">
+                  &copy; {new Date().getFullYear()} Mickael Hoffer — Tous droits réservés.
+              </p>
           </div>
         </footer>
       </section>
