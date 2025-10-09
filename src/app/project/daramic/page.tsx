@@ -1,6 +1,7 @@
 "use client";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Daramic() {
   return (
@@ -22,7 +23,7 @@ export default function Daramic() {
       <header className="relative w-full min-h-screen flex flex-col justify-center px-8 bg-gray-100">
         {/* Image de fond ONF */}
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/picture_daramic.jpg" // logo ou image de fond
             alt="ONF"
             className="w-full h-full object-cover"
@@ -40,7 +41,7 @@ export default function Daramic() {
         {/* Section images côte à côte */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="relative h-96 overflow-hidden bg-gray-100 flex items-center justify-center group rounded-2xl shadow-lg">
-            <img
+            <Image
               src="/logoServiceNOOOW.png"
               alt="Daramic logo ou site"
               className="w-full h-full object-contain transition-all duration-500 group-hover:brightness-110 group-hover:-translate-y-1"
@@ -50,7 +51,7 @@ export default function Daramic() {
           </div>
 
           <div className="relative h-96 overflow-hidden bg-gray-100 flex items-center justify-center group rounded-2xl shadow-lg">
-            <img
+            <Image
               src="/logoServiceNow.jpg"
               alt="ServiceNow ou tableau de bord"
               className="w-full h-full object-contain transition-all duration-500 group-hover:brightness-110 group-hover:-translate-y-1"
@@ -90,7 +91,7 @@ export default function Daramic() {
           </p>
           <br /><br />
           <div className="overflow-hidden rounded-2xl mb-4">
-            <img
+            <Image
               src="/Capture ServiceNow 1.png"
               alt="MCD ONF"
               className="w-full h-[38rem] object-cover transition-transform duration-700 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
@@ -110,7 +111,7 @@ export default function Daramic() {
           </p>
           <br /><br />
           <div className="overflow-hidden rounded-2xl mb-4">
-            <img
+            <Image
               src="/Capture ServiceNow 2.png"
               alt="MCD ONF"
               className="w-full h-[38rem] object-cover transition-transform duration-700 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
@@ -129,7 +130,7 @@ export default function Daramic() {
           </p>
           <br /><br />
           <div className="overflow-hidden rounded-2xl mb-4">
-            <img
+            <Image
               src="/Capture ServiceNow 3.png"
               alt="MCD ONF"
               className="w-full h-[42.5rem] object-cover transition-transform duration-700 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1"

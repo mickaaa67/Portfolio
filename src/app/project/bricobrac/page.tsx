@@ -1,6 +1,7 @@
 "use client";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProjetBricoBrac() {
   return (
@@ -47,7 +48,7 @@ export default function ProjetBricoBrac() {
         {/* Logo du projet */}
         <div className="flex justify-center mb-12">
           <div className="w-56 h-56 bg-[#111318] rounded-2xl flex items-center justify-center overflow-hidden transition-transform duration-500 hover:scale-105 hover:shadow-2xl">
-            <img
+            <Image
               src="/logoBricobrac.png"
               alt="Logo BricoBrac"
               className="object-contain w-3/4 h-3/4 transition-transform duration-500"
@@ -98,7 +99,7 @@ export default function ProjetBricoBrac() {
             Aperçu du Modèle Conceptuel des Données
           </h2>
           <div className="overflow-hidden rounded-2xl mb-4 transition-transform duration-500 hover:scale-105 hover:shadow-2xl">
-            <img
+            <Image
               src="/CaptureBricobrac4.PNG"
               alt="MCD BricoBrac"
               className="w-full h-[35rem] object-contain bg-[#111318]"
