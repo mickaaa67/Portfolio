@@ -40,7 +40,7 @@ export default function ProjetEcolotri() {
             Le projet Ecolotri est un site web développé en binôme, durant un atelier de professionnalisation de 4 heures en première année de BTS SIO. L’objectif principal était de créer une plateforme pour le suivi et la gestion des données de pesée des déchets collectés par la société Ecolotri.
           </p>
           <p className="text-gray-300 leading-relaxed mb-4">
-            Le site propose plusieurs fonctionnalités clés pour différents types d'utilisateurs :
+            Le site propose plusieurs fonctionnalités clés pour différents types d&apos;utilisateurs :
           </p>
           <ul className="list-disc list-inside space-y-2 text-gray-300 ml-4 mb-4">
             <li><strong>Authentification :</strong> Connexion sécurisée pour transporteurs et administrateurs.</li>
@@ -60,11 +60,11 @@ export default function ProjetEcolotri() {
             <li>Développement de la liste des pesées pour les administrateurs.</li>
             <li>Implémentation des fonctionnalités de modification et suppression des pesées.</li>
             <li>Création du menu statistique et des rapports associés.</li>
-            <li>Développement de la fonctionnalité d'ajout de nouvelles pesées.</li>
+            <li>Développement de la fonctionnalité d&apos;ajout de nouvelles pesées.</li>
             <li>Gestion globale de la partie administrative du site.</li>
           </ul>
           <p className="text-gray-300 leading-relaxed">
-            Mon binôme s'est concentré sur la base de données, le CSS et le système d'authentification.
+            Mon binôme s&apos;est concentré sur la base de données, le CSS et le système d&apos;authentification.
           </p>
         </section>
 
@@ -72,7 +72,7 @@ export default function ProjetEcolotri() {
         <section className="mb-12">
           <h2 className="text-2xl font-semibold text-white mb-4">Aperçu du Modèle Conceptuel de Données (MCD)</h2>
           <p className="text-gray-300 leading-relaxed mb-4">
-            Ce MCD organise les données d'Ecolotri autour de trois éléments : Syndicats, Pesées et Types de Déchets. Chaque pesée est liée à un syndicat et à un type de déchet. Cela structure les informations pour suivre les collectes par syndicat et type.
+            Ce MCD organise les données d&apos;Ecolotri autour de trois éléments : Syndicats, Pesées et Types de Déchets. Chaque pesée est liée à un syndicat et à un type de déchet. Cela structure les informations pour suivre les collectes par syndicat et type.
           </p>
           <div className="overflow-hidden rounded-2xl mb-4">
             <img

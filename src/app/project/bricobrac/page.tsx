@@ -1,7 +1,6 @@
 "use client";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function ProjetBricoBrac() {
   return (
@@ -48,7 +47,7 @@ export default function ProjetBricoBrac() {
         {/* Logo du projet */}
         <div className="flex justify-center mb-12">
           <div className="w-56 h-56 bg-[#111318] rounded-2xl flex items-center justify-center overflow-hidden transition-transform duration-500 hover:scale-105 hover:shadow-2xl">
-            <Image
+            <img
               src="/logoBricobrac.png"
               alt="Logo BricoBrac"
               className="object-contain w-3/4 h-3/4 transition-transform duration-500"
@@ -64,8 +63,8 @@ export default function ProjetBricoBrac() {
           <p className="text-gray-300 leading-relaxed">
             Le projet <span className="text-white font-medium">Brico’Brac</span> est un
             site de vente en ligne pour une chaîne de magasins de bricolage familiale.
-            L'objectif était de créer une plateforme permettant à l'entreprise
-            d'étendre sa présence au-delà des magasins physiques et d'offrir ses
+            L&apos;objectif était de créer une plateforme permettant à l&apos;entreprise
+            d&apos;étendre sa présence au-delà des magasins physiques et d&apos;offrir ses
             produits à une clientèle plus large.
           </p>
         </section>
@@ -76,7 +75,7 @@ export default function ProjetBricoBrac() {
             Mes contributions au projet
           </h2>
           <p className="text-gray-300 mb-4">
-            En tant que membre d'une équipe de trois personnes, j'ai participé activement
+            En tant que membre d&apos;une équipe de trois personnes, j&apos;ai participé activement
             au développement de ce projet réalisé en une semaine dans le cadre de notre
             formation. Mes principales contributions ont concerné :
           </p>
@@ -99,7 +98,7 @@ export default function ProjetBricoBrac() {
             Aperçu du Modèle Conceptuel des Données
           </h2>
           <div className="overflow-hidden rounded-2xl mb-4 transition-transform duration-500 hover:scale-105 hover:shadow-2xl">
-            <Image
+            <img
               src="/CaptureBricobrac4.PNG"
               alt="MCD BricoBrac"
               className="w-full h-[35rem] object-contain bg-[#111318]"

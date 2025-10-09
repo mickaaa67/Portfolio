@@ -82,7 +82,7 @@ export default function JungLogistique() {
                 {
                 title: "Vue Facturation Kronenbourg",
                 content:
-                    "Cette vue est une migration depuis l'ancien portail développé en VBscript vers une nouvelle interface en C# .NET. L'utilisateur renseigne une période (entre deux dates) pour visualiser les informations de facturation concernant les réceptions effectuées pour le client Heineken.Le tableau affiché ci-dessous présente différentes informations clés telles que la référence de la réception, l'année du code, le fournisseur, le propriétaire, le motif, l'article, le lot, le nombre de palettes et la somme en valeur logistique (VL). Une fonctionnalité importante de cette vue est la possibilité pour l'utilisateur de télécharger ces données sous forme de fichier Excel (.xlsx) ou CSV (.csv) pour une analyse ou un traitement ultérieur.",
+                    "Cette vue est une migration depuis l&apos;ancien portail développé en VBscript vers une nouvelle interface en C# .NET. L&apos;utilisateur renseigne une période (entre deux dates) pour visualiser les informations de facturation concernant les réceptions effectuées pour le client Heineken.Le tableau affiché ci-dessous présente différentes informations clés telles que la référence de la réception, l&apos;année du code, le fournisseur, le propriétaire, le motif, l&apos;article, le lot, le nombre de palettes et la somme en valeur logistique (VL). Une fonctionnalité importante de cette vue est la possibilité pour l&apos;utilisateur de télécharger ces données sous forme de fichier Excel (.xlsx) ou CSV (.csv) pour une analyse ou un traitement ultérieur.",
                 image: "/Capture Jung 1.png", 
                 },
                 ].map((view, index) => (
@@ -103,7 +103,7 @@ export default function JungLogistique() {
             {[
                 {
                 title: "Vue Prise en Charge Heineken",
-                content: "Cette vue permet de visualiser la liste des supports logistiques préparés pour Heineken sur une période donnée, définie par une date de début et une date de fin. Une fonctionnalité clé que j'ai implémentée est la possibilité de filtrer l'affichage des préparations selon leur type d'expédition :",
+                content: "Cette vue permet de visualiser la liste des supports logistiques préparés pour Heineken sur une période donnée, définie par une date de début et une date de fin. Une fonctionnalité clé que j&apos;ai implémentée est la possibilité de filtrer l&apos;affichage des préparations selon leur type d&apos;expédition :",
                 image: "/Capture Jung 2.png", 
                 },
                 ].map((view, index) => (
@@ -121,12 +121,12 @@ export default function JungLogistique() {
                 <p className="text-gray-400 leading-relaxed">{view.content}</p>
                 <br />
                     <ul className="text-gray-400 leading-relaxed">
-                        <li><strong className="text-white">Toutes les préparations :</strong> Affiche l'ensemble des supports préparés, qu'ils soient destinés à être expédiés par lots ou par messagerie.</li><br />
+                        <li><strong className="text-white">Toutes les préparations :</strong> Affiche l&apos;ensemble des supports préparés, qu&apos;ils soient destinés à être expédiés par lots ou par messagerie.</li><br />
                         <li><strong className="text-white">Préparations en messagerie :</strong> Concernent les expéditions de plus petite taille, souvent composées de colis individuels ou de petites quantités de marchandises, traitées par des transporteurs de messagerie.</li><br />
-                        <li><strong className="text-white">Préparations en lots :</strong> Désigne les expéditions plus importantes, généralement constituées de plusieurs palettes ou d'un volume conséquent de marchandises, souvent transportées par des camions complets ou partiels.</li>
+                        <li><strong className="text-white">Préparations en lots :</strong> Désigne les expéditions plus importantes, généralement constituées de plusieurs palettes ou d&apos;un volume conséquent de marchandises, souvent transportées par des camions complets ou partiels.</li>
                     </ul>
                 <br />
-                <p className="text-gray-400 leading-relaxed">L'utilisateur peut ainsi choisir le type de préparation qu'il souhaite consulter en sélectionnant l'option correspondante avant de lancer la recherche. Le tableau résultant affichera ensuite les informations des supports logistiques correspondant au filtre appliqué pour la période spécifiée.</p>
+                <p className="text-gray-400 leading-relaxed">L&apos;utilisateur peut ainsi choisir le type de préparation qu&apos;il souhaite consulter en sélectionnant l&apos;option correspondante avant de lancer la recherche. Le tableau résultant affichera ensuite les informations des supports logistiques correspondant au filtre appliqué pour la période spécifiée.</p>
                 </div>
             ))}
             {[
@@ -156,13 +156,13 @@ export default function JungLogistique() {
                         <li>- Par code destinataire de préparation.</li>
                     </ul>
                 <br />
-                <p className="text-gray-400 leading-relaxed">Une fois les critères de recherche sélectionnés et appliqués, un tableau s'affiche avec les informations suivantes pour chaque enregistrement Atex : Année de préparation, Numéro de préparation, Numéro de support, Article, Numéro de série, Destinataire préparation, et Numéro VO.</p>
+                <p className="text-gray-400 leading-relaxed">Une fois les critères de recherche sélectionnés et appliqués, un tableau s&apos;affiche avec les informations suivantes pour chaque enregistrement Atex : Année de préparation, Numéro de préparation, Numéro de support, Article, Numéro de série, Destinataire préparation, et Numéro VO.</p>
                 </div>
             ))}
             {[
                 {
-                title: "Vue de l'État des Stocks",
-                content: "Cette vue dynamique fournit un aperçu en temps réel de l'état des stocks pour l' activité et le dépôt actuellement sélectionnés, à la date du 2 mai 2025.",
+                title: "Vue de l&apos;État des Stocks",
+                content: "Cette vue dynamique fournit un aperçu en temps réel de l&apos;état des stocks pour l&apos; activité et le dépôt actuellement sélectionnés, à la date du 2 mai 2025.",
                 image: "/Capture Jung 4.png", 
                 },
                 ].map((view, index) => (
@@ -188,13 +188,13 @@ export default function JungLogistique() {
                         <li><strong className="text-white">Stockage picking :</strong> Montre les quantités disponibles pour le prélèvement.</li><br />
                     </ul>
                 <br />
-                <p className="text-gray-400 leading-relaxed">Pour chaque type de stockage et chaque produit, les informations suivantes sont affichées : Code Propriétaire, Propriétaire, Type de support, Quantité en stock, et <strong className="text-white">Quantité en équiv. EPR 80 </strong>(équivalent EUR palette 80x120). En bas de la page, les totaux pour le dépôt sélectionné sont affichés. L'utilisateur a la possibilité de <strong className="text-white">télécharger ces informations au format Excel (.xlsx) ou CSV (.csv).</strong></p>
+                <p className="text-gray-400 leading-relaxed">Pour chaque type de stockage et chaque produit, les informations suivantes sont affichées : Code Propriétaire, Propriétaire, Type de support, Quantité en stock, et <strong className="text-white">Quantité en équiv. EPR 80 </strong>(équivalent EUR palette 80x120). En bas de la page, les totaux pour le dépôt sélectionné sont affichés. L&apos;utilisateur a la possibilité de <strong className="text-white">télécharger ces informations au format Excel (.xlsx) ou CSV (.csv).</strong></p>
                 </div>
             ))}
             {[
                 {
                 title: "Automatisation des Mails aux Transporteur(s)",
-                content: "Dans le cadre de mes responsabilités, j'ai conçu et développé une fonctionnalité visant à optimiser la communication avec les transporteurs. Cette interface permet de visualiser l'ensemble des chargements disponibles sous forme de liste. L'utilisateur peut y sélectionner un ou plusieurs transporteurs, ainsi que les chargements correspondants, puis lancer l'envoi automatique d'un e-mail. Chaque transporteur reçoit un message personnalisé accompagné d'un fichier Excel en pièce jointe. *(Note : Cette page n'est pas présentée pour des raisons de confidentialité des données.)*",
+                content: "Dans le cadre de mes responsabilités, j&apos;ai conçu et développé une fonctionnalité visant à optimiser la communication avec les transporteurs. Cette interface permet de visualiser l&apos;ensemble des chargements disponibles sous forme de liste. L&apos;utilisateur peut y sélectionner un ou plusieurs transporteurs, ainsi que les chargements correspondants, puis lancer l&apos;envoi automatique d&apos;un e-mail. Chaque transporteur reçoit un message personnalisé accompagné d&apos;un fichier Excel en pièce jointe. *(Note : Cette page n&apos;est pas présentée pour des raisons de confidentialité des données.)*",
                 image: "/Capture Jung 5.png", 
                 },
                 ].map((view, index) => (

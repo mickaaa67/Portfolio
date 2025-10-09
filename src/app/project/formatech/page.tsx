@@ -100,7 +100,7 @@ export default function ProjetFormatech() {
           </ul>
         </section>
 
-        {/* Image principale */}
+        {/* img principale */}
         <section className="mb-10">
           <div className="overflow-hidden rounded-2xl mb-6 transition-transform duration-500 hover:scale-105 hover:shadow-2xl">
             <img

@@ -1,14 +1,12 @@
-"use client";
-
+// 1. DIRECTIVE CÔTÉ CLIENT (DOIT ÊTRE LA PREMIÈRE LIGNE)
+"use client"; 
+// 2. IMPORTS REACT
+import React, { useState, useEffect } from "react"; 
 import Link from 'next/link';
-import Image from 'next/image';
-import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import ContactForm from './ContactForm';
-import React, { useState } from 'react';
-
 
 export default function Home() {
   useEffect(() => {
@@ -124,7 +122,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             </a>
           </nav>
 
-          {/* Icône de Menu (Pour Mobile) - Vous devrez implémenter la logique d'ouverture/fermeture d'un menu latéral ou modal pour cela */}
+          {/* Icône de Menu (Pour Mobile) - Vous devrez implémenter la logique d&apos;ouverture/fermeture d&apos;un menu latéral ou modal pour cela */}
           {/* <div className="md:hidden">
             <button className="text-white text-2xl">
               <svg fill="currentColor" viewBox="0 0 20 20" className="w-6 h-6">...</svg>
@@ -135,9 +133,9 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
 
       {/* ================== HERO EN HAUT ================== */}
       <header className="relative w-full min-h-screen flex flex-col justify-center px-8 bg-gray-100">
-        {/* Image de fond */}
+        {/* img de fond */}
         <div className="absolute inset-0">
-          <Image
+          <img
             src="/picture_presentation.jpg"
             alt="Background"
             className="w-full h-full object-cover"
@@ -181,11 +179,11 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
           </div>
 
 
-          {/* Image à droite */}
+          {/* img à droite */}
           <div className="mt-4 md:mt-0 md:w-2/5 flex justify-center md:ml-50 animate-float" data-aos="fade-left">
             <div className="relative w-full max-w-sm overflow-hidden rounded-xl shadow-lg group">
               <div className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/50 to-transparent z-10"></div>
-              <Image
+              <img
                 src="/about_me.webp"
                 alt="Jeune développeur passionné travaillant sur un ordinateur"
                 className="w-full rounded-xl group-hover:scale-110 transition-transform duration-300"
@@ -227,10 +225,10 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             <p className="text-lg leading-relaxed mb-4">
               Fort de plusieurs réalisations qui témoignent de ma motivation et de mes compétences techniques, 
               <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text font-semibold"> je recherche activement un poste de Développeur Web (CDD ou CDI)</span>
-              , afin de mettre en pratique et d'enrichir les acquis de ma Licence Professionnelle Développement Web, Communication et Apprentissages. Disponible immédiatement et opérationnel, je suis prêt à m'investir dans votre équipe sur des projets stimulants.
+              , afin de mettre en pratique et d&apos;enrichir les acquis de ma Licence Professionnelle Développement Web, Communication et Apprentissages. Disponible immédiatement et opérationnel, je suis prêt à m&apos;investir dans votre équipe sur des projets stimulants.
             </p>
             <p className="text-lg leading-relaxed">
-              Mon objectif est de continuer à progresser afin de devenir <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text font-semibold">développeur web full stack</span>. J'aime relever de nouveaux défis 
+              Mon objectif est de continuer à progresser afin de devenir <span className="bg-gradient-to-r from-blue-500 to-purple-600 text-transparent bg-clip-text font-semibold">développeur web full stack</span>. J&apos;aime relever de nouveaux défis 
               techniques et contribuer à des projets concrets tout en apportant mon 
               énergie et ma créativité.
             </p>
@@ -250,18 +248,18 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                 className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105"
             >
                 <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
-                    <Image
+                    <img
                         src="/logoONF.jpg"
                         alt="Site e-commerce ONF"
                         className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300"
-                        style={{ padding: '10px' }} // Optionnel: ajoute un léger padding visuel
+                        style={{ padding: '10p' }} // Optionnel: ajoute un léger padding visuel
                     />
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                 </div>
                 <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-800">Application Web ONF</h3>
                     <p className="mt-2 text-gray-600 text-sm">
-                        Site de vente de vêtements et d'équipements de protection individuelle (EPI).
+                        Site de vente de vêtements et d&apos;équipements de protection individuelle (EPI).
                     </p>
                     <div className="flex flex-wrap gap-2 mt-4">
                         {["PHP", "MySQL", "JavaScript", "Bootstrap", "GitHub"].map((tech) => (
@@ -282,7 +280,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Projet Jung Logistique */}
             <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105">
               <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
-                <Image
+                <img
                   src="/logoJungLogistique.png"
                   alt="Optimisation back-end Jung Logistique"
                   className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300"
@@ -296,7 +294,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                   Alternance Jung Logistique
                 </h3>
                 <p className="mt-2 text-gray-600 text-sm">
-                  Optimisation de l'architecture back-end/front-end de l'extranet de l'entreprise.
+                  Optimisation de l&apos;architecture back-end/front-end de l&apos;extranet de l&apos;entreprise.
                 </p>
 
                 <div className="flex flex-wrap gap-2 mt-4">
@@ -321,7 +319,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Projet Écolotri */}
             <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105">
                 <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
-                    <Image src="/logoEcolotri.jpg" alt="Écolotri" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
+                    <img src="/logoEcolotri.jpg" alt="Écolotri" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                 </div>
                 <div className="p-6">
@@ -344,7 +342,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Projet ServiceNow */}
             <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105">
                 <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
-                    <Image src="/logoServiceNOOOW.png" alt="ServiceNow" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
+                    <img src="/logoServiceNOOOW.png" alt="ServiceNow" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                 </div>
                 <div className="p-6">
@@ -367,7 +365,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Projet BricoBrac */}
             <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105">
                 <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
-                    <Image src="/logoBricoBrac.png" alt="BricoBrac" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
+                    <img src="/logoBricoBrac.png" alt="BricoBrac" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                 </div>
                 <div className="p-6">
@@ -390,12 +388,12 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Projet Formatech */}
             <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105">
                 <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
-                    <Image src="/LogoFormaTech.png" alt="Formatech" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
+                    <img src="/LogoFormaTech.png" alt="Formatech" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                 </div>
                 <div className="p-6">
                     <h3 className="text-xl font-bold text-gray-800">Application Web Formatech</h3>
-                    <p className="mt-2 text-gray-600 text-sm">Site web pour la gestion des formations, modules et cours au sein d'un organisme de formation.</p>
+                    <p className="mt-2 text-gray-600 text-sm">Site web pour la gestion des formations, modules et cours au sein d&apos;un organisme de formation.</p>
                     <div className="flex flex-wrap gap-2 mt-4">
                         {["HTML", "CSS", "PHP", "MySQL", "JavaScript", "Trello", "GitHub"].map((tech) => (
                             <span key={tech} className="px-3 py-1 text-xs bg-gray-200 text-gray-700 rounded-full">{tech}</span>
@@ -444,7 +442,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
               description=""
               details={[
                 "Conception et développement d’applications (Bloc 2 : Option SLAM)",
-                "Mathématiques pour l'informatique",
+                "Mathématiques pour l&apos;informatique",
                 "Ateliers de professionnalisation"
               ]}
               color="green"
@@ -455,7 +453,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             <TimelineItem
               title={
                 <>
-                  Baccalauréat Technologique  <br /> Sciences et Technologies de l'Industrie et du
+                  Baccalauréat Technologique  <br /> Sciences et Technologies de l&apos;Industrie et du
                   Développement Durable
                   <br />Lycée Polyvalent Jean-Baptiste Schwilgué
                 </>
@@ -463,7 +461,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
               date="2018-2021"
               description=""
               details={[
-                "Systèmes d'Information et Numérique (SIN) Innovation",
+                "Systèmes d&apos;Information et Numérique (SIN) Innovation",
                 "Technologique et Éco-conception (ITEC - Tronc Commun)",
                 "Mathématiques (appliquées à l’informatique)"
               ]}
@@ -488,8 +486,8 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
               date="Octobre - Novembre 2024"
               description="Strasbourg - Durée: 8 semaines"
               details={[
-                "Développement collaboratif d'un site web responsive en utilisant les frameworks Laravel, React.js et Angular pour un centre de coworking en ligne automatisant les processus de réservation pour 2000 utilisateurs.",
-                "Contribution à l'optimisation des fonctionnalités du site, en garantissant une expérience utilisateur fluide et sécurisée.",
+                "Développement collaboratif d&apos;un site web responsive en utilisant les frameworks Laravel, React.js et Angular pour un centre de coworking en ligne automatisant les processus de réservation pour 2000 utilisateurs.",
+                "Contribution à l&apos;optimisation des fonctionnalités du site, en garantissant une expérience utilisateur fluide et sécurisée.",
               ]}
               color="purple"
             />
@@ -500,8 +498,8 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
               date="Septembre 2023 - Septembre 2024"
               description="Sélestat - Durée: 1 an"
               details={[
-                "Développement et refonte de vues existantes de l'ancien site interne en utilisant le framework .NET, avec les langages HTML/CSS, JavaScript, Ajax et SQL, pour une interface utilisateur dynamique",
-                "Développement d'une nouvelle vue de gestion de stock pour un dépôt spécifique, améliorant la visibilité et le suivi des marchandises.",
+                "Développement et refonte de vues existantes de l&apos;ancien site interne en utilisant le framework .NET, avec les langages HTML/CSS, JavaScript, Ajax et SQL, pour une interface utilisateur dynamique",
+                "Développement d&apos;une nouvelle vue de gestion de stock pour un dépôt spécifique, améliorant la visibilité et le suivi des marchandises.",
                 "Optimisation des requêtes SQL, améliorant significativement les performances detraitement des données et leur fiabilité."
               ]}
               color="purple"
@@ -509,12 +507,12 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
 
             {/* === Stage ONF (EXPÉRIENCE) === */}
             <TimelineItem
-              title="Stage en Informatique - l'Office National des Forêts (ONF)"
+              title="Stage en Informatique - l&apos;Office National des Forêts (ONF)"
               date="Février - Avril 2023"
               description="Colmar - Durée: 6 semaines"
               details={[
-                "Conception et développement d'un site e-commerce responsive en PHP, SQL, HTML/CSS, JavaScript ainsi qu’avec le framework open source Vue.js, pour la commercialisation d'équipements de protection individuelle de l'ONF. Déployé sur l'ensemble de la région Grand Est, pour environ 500 utilisateurs.",
-                "Gestion de l'intégration des données produits et des interactions utilisateur, garantissant une expérience d'achat fluide.",
+                "Conception et développement d&apos;un site e-commerce responsive en PHP, SQL, HTML/CSS, JavaScript ainsi qu’avec le framework open source Vue.js, pour la commercialisation d&apos;équipements de protection individuelle de l&apos;ONF. Déployé sur l&apos;ensemble de la région Grand Est, pour environ 500 utilisateurs.",
+                "Gestion de l&apos;intégration des données produits et des interactions utilisateur, garantissant une expérience d&apos;achat fluide.",
               ]}
               color="purple"
             />
@@ -541,7 +539,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
           Mes Compétences Techniques
         </h2>
         <p className="text-lg text-gray-600 text-center mb-10" data-aos="fade-up">
-          Technologies et outils que j'utilise
+          Technologies et outils que j&apos;utilise
         </p>
 
         {/* 1. FRONT-END */}
@@ -555,7 +553,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* HTML5 */}
             <div className="bg-gradient-to-tr from-purple-700 to-purple-900 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/html5.svg" alt="HTML5" className="w-12 h-12" />
+                <img src="/html5.svg" alt="HTML5" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">HTML5</h3>
               <p className="text-purple-200 text-sm mt-1">Avancé</p>
@@ -564,7 +562,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* CSS3 */}
             <div className="bg-gradient-to-tr from-blue-700 to-blue-900 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="100">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/css3.png" alt="CSS3" className="w-12 h-12" />
+                <img src="/css3.png" alt="CSS3" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">CSS3</h3>
               <p className="text-blue-200 text-sm mt-1">Avancé</p>
@@ -573,7 +571,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* JavaScript */}
             <div className="bg-gradient-to-tr from-yellow-500 to-yellow-700 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="200">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/javascript.png" alt="JavaScript" className="w-12 h-12" />
+                <img src="/javascript.png" alt="JavaScript" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">JavaScript</h3>
               <p className="text-yellow-200 text-sm mt-1">Solide</p>
@@ -594,7 +592,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* PHP */}
             <div className="bg-gradient-to-tr from-indigo-500 to-indigo-700 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="400">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/php.png" alt="PHP" className="w-12 h-12" />
+                <img src="/php.png" alt="PHP" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">PHP</h3>
               <p className="text-indigo-200 text-sm mt-1">Solide</p>
@@ -603,7 +601,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* C# (Nouvelle couleur) */}
             <div className="bg-gradient-to-tr from-fuchsia-700 to-fuchsia-900 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="450">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/csharp.png" alt="C#" className="w-12 h-12" />
+                <img src="/csharp.png" alt="C#" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">C#</h3>
               <p className="text-fuchsia-200 text-sm mt-1">Pratique</p>
@@ -612,7 +610,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Java (Nouvelle couleur) */}
             <div className="bg-gradient-to-tr from-orange-600 to-orange-800 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="500">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/java.png" alt="Java" className="w-12 h-12" />
+                <img src="/java.png" alt="Java" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">Java</h3>
               <p className="text-orange-200 text-sm mt-1">Pratique</p>
@@ -621,7 +619,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Python (Nouvelle couleur) */}
             <div className="bg-gradient-to-tr from-yellow-500 to-blue-700 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="550">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/python.png" alt="Python" className="w-12 h-12" />
+                <img src="/python.png" alt="Python" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">Python</h3>
               <p className="text-yellow-200 text-sm mt-1">Pratique</p>
@@ -630,7 +628,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* SQL (SGBD Language) */}
             <div className="bg-gradient-to-tr from-red-600 to-red-800 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="600">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/sql.png" alt="SQL" className="w-12 h-12" />
+                <img src="/sql.png" alt="SQL" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">SQL</h3>
               <p className="text-red-200 text-sm mt-1">Avancé</p>
@@ -651,7 +649,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* React.js (Framework) */}
             <div className="bg-gradient-to-tr from-cyan-500 to-blue-700 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="700">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/reactJS.png" alt="React" className="w-12 h-12" />
+                <img src="/reactJS.png" alt="React" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">React.js</h3>
               <p className="text-cyan-200 text-sm mt-1">Solide</p>
@@ -660,7 +658,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Bootstrap (Nouvelle couleur) */}
             <div className="bg-gradient-to-tr from-violet-700 to-violet-900 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="750">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/bootstrap.png" alt="Bootstrap" className="w-12 h-12" />
+                <img src="/bootstrap.png" alt="Bootstrap" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">Bootstrap</h3>
               <p className="text-violet-200 text-sm mt-1">Solide</p>
@@ -669,7 +667,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* .NET (Nouvelle couleur) */}
             <div className="bg-gradient-to-tr from-teal-500 to-green-700 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="800">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/net.png" alt=".NET" className="w-12 h-12" />
+                <img src="/net.png" alt=".NET" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">.NET</h3>
               <p className="text-teal-200 text-sm mt-1">Pratique</p>
@@ -678,7 +676,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Laravel (Nouvelle couleur) */}
             <div className="bg-gradient-to-tr from-red-500 to-orange-700 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="850">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/laravel.png" alt="Laravel" className="w-12 h-12" />
+                <img src="/laravel.png" alt="Laravel" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">Laravel</h3>
               <p className="text-red-200 text-sm mt-1">Pratique</p>
@@ -698,7 +696,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Git */}
             <div className="bg-gradient-to-tr from-gray-700 to-gray-900 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="1000">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/git.png" alt="Git/GitHub" className="w-12 h-12" />
+                <img src="/git.png" alt="Git/GitHub" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">Git</h3>
               <p className="text-gray-300 text-sm mt-1">Versionning</p>
@@ -707,7 +705,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* GitHub */}
             <div className="bg-gradient-to-tr from-gray-700 to-gray-900 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="1100">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/github.png" alt="Git/GitHub" className="w-12 h-12" />
+                <img src="/github.png" alt="Git/GitHub" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">GitHub</h3>
               <p className="text-gray-300 text-sm mt-1">Versionning</p>
@@ -716,7 +714,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Visual Studio Code */}
             <div className="bg-gradient-to-tr from-blue-600 to-blue-800 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="1200">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/vscode.png" alt="VS Code" className="w-12 h-12" />
+                <img src="/vscode.png" alt="VS Code" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">VS Code</h3>
               <p className="text-blue-300 text-sm mt-1">IDE</p>
@@ -725,7 +723,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Yarn / npm */}
             <div className="bg-gradient-to-tr from-red-500 to-red-700 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="1300">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/npm.png" alt="Yarn/npm" className="w-12 h-12" />
+                <img src="/npm.png" alt="Yarn/npm" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">npm</h3>
               <p className="text-red-200 text-sm mt-1">Gestion Paquets</p>
@@ -734,7 +732,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* SQL Server */}
             <div className="bg-gradient-to-tr from-orange-600 to-orange-800 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="1400">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/sqlserver.png" alt="SQL Server" className="w-12 h-12" />
+                <img src="/sqlserver.png" alt="SQL Server" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">SQL Server</h3>
               <p className="text-orange-200 text-sm mt-1">Outil SGBD</p>
@@ -743,7 +741,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Docker */}
             <div className="bg-gradient-to-tr from-sky-600 to-sky-800 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="1500">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/docker.png" alt="Docker" className="w-12 h-12" />
+                <img src="/docker.png" alt="Docker" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">Docker</h3>
               <p className="text-sky-200 text-sm mt-1">Conteneurisation</p>
@@ -752,7 +750,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Trello */}
             <div className="bg-gradient-to-tr from-teal-500 to-teal-700 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="1600">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/trello.png" alt="Trello" className="w-12 h-12" />
+                <img src="/trello.png" alt="Trello" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">Trello</h3>
               <p className="text-teal-200 text-sm mt-1">Gestion Projet</p>
@@ -761,7 +759,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Wordpress */}
             <div className="bg-gradient-to-tr from-yellow-600 to-yellow-800 rounded-xl p-6 flex flex-col items-center justify-center text-center shadow-lg transform transition duration-300 hover:scale-105" data-aos="zoom-in" data-aos-delay="1700">
               <div className="w-16 h-16 flex items-center justify-center mb-4">
-                <Image src="/wordpress.png" alt="Wordpress" className="w-12 h-12" />
+                <img src="/wordpress.png" alt="Wordpress" className="w-12 h-12" />
               </div>
               <h3 className="text-white font-bold text-lg">Wordpress</h3>
               <p className="text-yellow-200 text-sm mt-1">CMS</p>
@@ -783,7 +781,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
         {/* Contenu principal (Coordonnées à gauche, Formulaire à droite) */}
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-stretch">
             
-            {/* Infos de contact (Gauche) - Style d'origine conservé */}
+            {/* Infos de contact (Gauche) - Style d&apos;origine conservé */}
             <div className="bg-[#141f3a] rounded-2xl p-8 shadow-lg">
                 <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 text-transparent bg-clip-text">Informations de contact</h3>
                 <ul className="space-y-5">
@@ -906,7 +904,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
               </p>
               
               {/* Section Informations Légales (Style ajusté pour être minimaliste) */}
-              {/* J'ai regroupé les liens dans un seul paragraphe pour minimiser l'impact sur le style général du pied de page. */}
+              {/* J&apos;ai regroupé les liens dans un seul paragraphe pour minimiser l&apos;impact sur le style général du pied de page. */}
               <p className="text-xs font-medium mb-4 space-x-4 text-gray-500">
                   <a href="/mentions-legales" className="hover:text-indigo-400 transition duration-200">
                       Politique de confidentialité

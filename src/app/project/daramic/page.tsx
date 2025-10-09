@@ -1,7 +1,6 @@
 "use client";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Daramic() {
   return (
@@ -21,10 +20,10 @@ export default function Daramic() {
       </header>
 
       <header className="relative w-full min-h-screen flex flex-col justify-center px-8 bg-gray-100">
-        {/* Image de fond ONF */}
+        {/* img de fond ONF */}
         <div className="absolute inset-0">
-          <Image
-            src="/picture_daramic.jpg" // logo ou image de fond
+          <img
+            src="/picture_daramic.jpg" // logo ou img de fond
             alt="ONF"
             className="w-full h-full object-cover"
           />
@@ -38,10 +37,10 @@ export default function Daramic() {
           Stage chez Daramic – Optimisation de la Gestion des Services IT
         </h1>
         <br /><br />
-        {/* Section images côte à côte */}
+        {/* Section imgs côte à côte */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="relative h-96 overflow-hidden bg-gray-100 flex items-center justify-center group rounded-2xl shadow-lg">
-            <Image
+            <img
               src="/logoServiceNOOOW.png"
               alt="Daramic logo ou site"
               className="w-full h-full object-contain transition-all duration-500 group-hover:brightness-110 group-hover:-translate-y-1"
@@ -51,7 +50,7 @@ export default function Daramic() {
           </div>
 
           <div className="relative h-96 overflow-hidden bg-gray-100 flex items-center justify-center group rounded-2xl shadow-lg">
-            <Image
+            <img
               src="/logoServiceNow.jpg"
               alt="ServiceNow ou tableau de bord"
               className="w-full h-full object-contain transition-all duration-500 group-hover:brightness-110 group-hover:-translate-y-1"
@@ -68,13 +67,13 @@ export default function Daramic() {
             Mon expérience de stage chez Daramic
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            Mon premier stage en entreprise s'est déroulé pendant cinq semaines enrichissantes
+            Mon premier stage en entreprise s&apos;est déroulé pendant cinq semaines enrichissantes
             chez Daramic, une entreprise située à Sélestat. Daramic est un leader mondial dans
             la fabrication et la fourniture de séparateurs de batterie haute performance pour les
             secteurs automobile, industriel et les applications spéciales.
           </p>
           <p className="mt-4 text-gray-700 leading-relaxed">
-            L'usine de Sélestat, où j'ai effectué mon stage, joue un rôle clé dans la production
+            L&apos;usine de Sélestat, où j&apos;ai effectué mon stage, joue un rôle clé dans la production
             de ces composants essentiels. J’ai intégré l’équipe IT et participé à un projet
             d’optimisation de la gestion des services informatiques via la plateforme ServiceNow.
           </p>
@@ -91,7 +90,7 @@ export default function Daramic() {
           </p>
           <br /><br />
           <div className="overflow-hidden rounded-2xl mb-4">
-            <Image
+            <img
               src="/Capture ServiceNow 1.png"
               alt="MCD ONF"
               className="w-full h-[38rem] object-cover transition-transform duration-700 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
@@ -111,7 +110,7 @@ export default function Daramic() {
           </p>
           <br /><br />
           <div className="overflow-hidden rounded-2xl mb-4">
-            <Image
+            <img
               src="/Capture ServiceNow 2.png"
               alt="MCD ONF"
               className="w-full h-[38rem] object-cover transition-transform duration-700 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
@@ -123,14 +122,14 @@ export default function Daramic() {
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Aperçu de SquaredUp</h2>
           <p className="text-gray-700 leading-relaxed">
-            Ma découverte et mon utilisation de l'outil de supervision SquaredUp ont eu lieu
+            Ma découverte et mon utilisation de l&apos;outil de supervision SquaredUp ont eu lieu
             durant la dernière semaine de mon stage. Mon expérience fut brève, mais elle m’a
             permis d’entrevoir son potentiel pour la supervision SCOM et la visualisation des
             services IT.
           </p>
           <br /><br />
           <div className="overflow-hidden rounded-2xl mb-4">
-            <Image
+            <img
               src="/Capture ServiceNow 3.png"
               alt="MCD ONF"
               className="w-full h-[42.5rem] object-cover transition-transform duration-700 ease-in-out hover:scale-105 hover:shadow-2xl hover:-translate-y-1"
@@ -144,7 +143,7 @@ export default function Daramic() {
             Informations complémentaires
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            Pour des raisons de confidentialité, les images de cette page sont des illustrations
+            Pour des raisons de confidentialité, les imgs de cette page sont des illustrations
             génériques. Ce stage m’a permis de renforcer mes compétences en analyse technique,
             en documentation, et en gestion d’actifs IT dans un contexte industriel.
           </p>

@@ -20,10 +20,10 @@ export default function StageONF() {
       </header>
 
       <header className="relative w-full min-h-screen flex flex-col justify-center px-8 bg-gray-100">
-        {/* Image de fond ONF */}
+        {/* img de fond ONF */}
         <div className="absolute inset-0">
           <img
-            src="/picture_onf.jpg" // logo ou image de fond
+            src="/picture_onf.jpg" // logo ou img de fond
             alt="ONF"
             className="w-full h-full object-cover"
           />
