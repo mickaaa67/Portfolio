@@ -1,6 +1,4 @@
-// 1. DIRECTIVE CÔTÉ CLIENT (DOIT ÊTRE LA PREMIÈRE LIGNE)
 "use client"; 
-// 2. IMPORTS REACT
 import React, { useState, useEffect } from "react"; 
 import Link from 'next/link';
 import AOS from "aos";
@@ -388,7 +386,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* Projet Formatech */}
             <div className="bg-white rounded-xl shadow-xl overflow-hidden group transform transition-transform duration-300 hover:scale-105">
                 <div className="relative h-48 overflow-hidden bg-gray-100 flex items-center justify-center">
-                    <img src="/LogoFormaTech.png" alt="Formatech" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px' }} />
+                    <img src="/LogoFormaTech.png" alt="Formatech" className="w-full h-full object-contain group-hover:scale-100 transition-transform duration-300" style={{ padding: '10px&' }} />
                     <div className="absolute inset-0 bg-gradient-to-tr from-black/60 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
                 </div>
                 <div className="p-6">
