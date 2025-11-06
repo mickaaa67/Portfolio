@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import nodemailer from "nodemailer";
+// @ts-ignore
+import nodemailer = require("nodemailer");
 
 // Configuration Nodemailer
 const transporter = nodemailer.createTransport({
