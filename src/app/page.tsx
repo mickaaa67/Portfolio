@@ -428,6 +428,24 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
             {/* FORMATIONS - POINTS EN VERT (GREEN-500) */}
             {/* -------------------------------------------------------------------------------------------------- */}
 
+            {/* === Formations - LP DWCA (FORMATION) === */}
+            <TimelineItem
+              title={
+                <>
+                  Licence Professionnelle  <br /> Développement Web, Communication et
+                  Apprentissages  <br /> Université de Strasbourg 
+                </>
+              }
+              date="2025-2026"
+              description=""
+              details={[
+                "Développement Front-End et Back-End (HTML, CSS, JavaScript, PHP, ReactJS, NodeJS)",
+                "Design UX/UI, applications 3D immersives, interactivité numérique et communication digitale",
+                "Gestion de projet multimédia, projets tutorés et stage pratique (420h)"
+              ]}
+              color="green"
+            />
+
             {/* === Formations - BTS Alternance (FORMATION) === */}
             <TimelineItem
               title={
@@ -849,7 +867,9 @@ const TimelineItem: React.FC<TimelineItemProps> = ({ title, date, description, d
                             >
                             <div>
                               <p className="font-semibold">Curriculum Vitae</p>
-                              <p className="text-gray-300 text-sm">Télécharger mon CV</p>
+                              <a href="https://drive.google.com/file/d/1buzlZ2ohKMsyxjBW_PSmYX_mBCuM6vIG/view?usp=sharing">
+                                <p className="text-gray-300 text-sm">Télécharger mon CV</p>
+                              </a>
                             </div>
                           </a>
                         </a>
